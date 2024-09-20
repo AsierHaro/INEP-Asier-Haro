@@ -7,8 +7,6 @@ using namespace std;
 
 void procesarRegistreUsuari() {
     string sobrenom, nom;
-
-    //Hola
     cin >> sobrenom;
     getline(cin, nom);
     if (sobrenom == " " or nom == " ") {
