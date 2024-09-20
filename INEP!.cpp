@@ -1,0 +1,53 @@
+// INEP!.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
+
+#include <iostream>
+using namespace std;
+
+void procesarRegistreUsuari() {
+    string sobrenom, nom, cognom, cognom2;
+    cin >> sobrenom >> nom >> cognom >> cognom2;
+    if (sobrenom == " " or nom == " " or cognom == " " or cognom2 == " ") {
+        cout << "Error al registrar l'usuari" << endl;
+    }
+    else {
+        cout << "El registre de l'usuari " << nom << " " << cognom << " " << cognom2 << " " << "(" << sobrenom << ") s'ha processat correctament." << endl;
+    }
+}
+
+int main()
+{
+    int opció;
+    bool sortir = false;
+    cout << "1. Gestio usuari" << endl << "2. Gestio continguts" <<
+        endl << "3. Consultes" << endl << "4. Sortir" << endl;
+    while (cin >> opció && sortir != true) {
+        if (opció == 1) {
+            cout << "1. Registre usuari" << endl << "2. Consulta usuari" <<
+                endl << "3. Modifica usuari" << endl << "4. Esborra usuari" << endl << "5. Tornar" << endl;
+            cin >> opció;
+            if (opció == 1) {
+                procesarRegistreUsuari();
+            }
+        }
+        else if (opció == 2) {
+            cout << "1. Gestio pel·licules" << endl << "2. Gestio series" << "3. Tornar" << endl;
+        }
+        else if (opció == 3) {
+            cout << "1. Consulta per qualificació d’edat" << endl << "2. Ultimes novetats" <<
+                endl << "3. Proximes estrenes" << "4. Tornar" << endl;
+        }
+        else if (opció == 4) {
+            sortir = true;
+        }
+    }
+}
+// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
+// Depurar programa: F5 o menú Depurar > Iniciar depuración
+
+// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
+//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
+//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
+//   4. Use la ventana Lista de errores para ver los errores
+//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
+//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
