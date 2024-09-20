@@ -8,6 +8,7 @@ using namespace std;
 void procesarRegistreUsuari() {
     string sobrenom, nom;
     cin >> sobrenom;
+    //Hola
     getline(cin, nom);
     if (sobrenom == " " or nom == " ") {
         cout << "Error al registrar l'usuari" << endl;
