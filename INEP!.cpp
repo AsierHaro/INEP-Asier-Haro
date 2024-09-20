@@ -2,16 +2,18 @@
 //
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 void procesarRegistreUsuari() {
-    string sobrenom, nom, cognom, cognom2;
-    cin >> sobrenom >> nom >> cognom >> cognom2;
-    if (sobrenom == " " or nom == " " or cognom == " " or cognom2 == " ") {
+    string sobrenom, nom;
+    cin >> sobrenom;
+    getline(cin, nom);
+    if (sobrenom == " " or nom == " ") {
         cout << "Error al registrar l'usuari" << endl;
     }
     else {
-        cout << "El registre de l'usuari " << nom << " " << cognom << " " << cognom2 << " " << "(" << sobrenom << ") s'ha processat correctament." << endl;
+        cout << "El registre de l'usuari " << nom <<" " << "(" << sobrenom << ") s'ha processat correctament." << endl;
     }
 }
 
