@@ -7,6 +7,7 @@ using namespace std;
 
 void consulta_usuari(string sobrenom_usuari)
 {
+    sql::Connection* con = NULL;
     try {
         ConnexioBD bd;
         string sql = "SELECT * FROM usuari WHERE sobrenom='sobrenom_usuari'";
@@ -20,7 +21,6 @@ void consulta_usuari(string sobrenom_usuari)
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (con != NULL) con->close();
     }
 }
 
@@ -35,7 +35,6 @@ void registrar_usuari()
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (bd.getCon() != NULL) bd.getCon()->close();
     }
 }
 
@@ -50,7 +49,6 @@ void modificar_usuari()
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (bd.getCon() != NULL) bd.getCon()->close();
     }
 }
 
@@ -65,14 +63,8 @@ void esborrar_usuari()
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (bd.getCon() != NULL) bd.getCon->close();
     }
 }
-
-
-
-
-
 
 
 

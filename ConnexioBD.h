@@ -17,15 +17,15 @@ class ConnexioBD
     public:
         ConnexioBD() {
             driver = sql::mysql::get_mysql_driver_instance();
-            con = driver->connect("URL_servidor:port", "usuari", "contrasenya");
-            con->setSchema("nom_base_dades");
+            con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep17", "cooKa9gahd9aak");
+            con->setSchema("inep");
             stmt = con->createStatement();
         }
 
         ~ConnexioBD() {
-            sql::mysql::MySQL_Driver* driver = NULL;
-            sql::Connection* con = NULL;
-            sql::Statement* stmt = NULL;
+            if (con) {
+                con->close();
+            }
         }
 
         sql::ResultSet* execQuery(string sql) {
