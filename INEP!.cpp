@@ -7,7 +7,6 @@ using namespace std;
 
 void consulta_usuari(string sobrenom_usuari)
 {
-    sql::Connection* con = NULL;
     try {
         ConnexioBD bd;
         string sql = "SELECT * FROM usuari WHERE sobrenom='sobrenom_usuari'";
