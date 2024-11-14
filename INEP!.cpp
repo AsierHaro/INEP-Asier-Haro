@@ -1,34 +1,22 @@
 // INEP!.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
-#include <iostream>
-#include <string>
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/statement.h>
-#include <mysql_connection.h>
-#include <mysql_driver.h>
+#include "ConnexioBD.h"
 using namespace std;
 
 
 void consulta_usuari(string sobrenom_usuari)
 {
-    sql::mysql::MySQL_Driver* driver = NULL;
-    sql::Connection* con = NULL;
-    sql::Statement* stmt = NULL;
     try {
-        driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("URL_servidor:port", "usuari", "contrasenya");
-        con->setSchema("nom_base_dades");
-        stmt = con->createStatement();
+        ConnexioBD bd;
         string sql = "SELECT * FROM usuari WHERE sobrenom='sobrenom_usuari'";
-        sql::ResultSet* res = stmt->executeQuery(sql);
+        sql::ResultSet* res = bd.execQuery(sql);
         while (res->next()) {
             cout << "Sobrenom: " << res->getString("sobrenom") << endl;
             cout << "Nom: " << res->getString("nom") << endl;
             cout << "Correu: " << res->getString("correu_electronic") << endl;
         }
-        con->close();
+        bd.getCon()->close();
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
@@ -39,63 +27,45 @@ void consulta_usuari(string sobrenom_usuari)
 
 void registrar_usuari()
 {
-    sql::mysql::MySQL_Driver* driver = NULL;
-    sql::Connection* con = NULL;
-    sql::Statement* stmt = NULL;
     try {
-        driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("URL_servidor:port", "usuari", "contrasenya");
-        con->setSchema("nom_base_dades");
-        stmt = con->createStatement();
+        ConnexioBD bd;
         string sql = "INSERT INTO usuari (sobrenom,usuari,correu_electronic) VALUES (asierhr, 'Asier Haro', asier.haro@estudiantat.upc.edu)";
-        stmt->execute(sql);
-        con->close();
+        bd.exec(sql);
+        bd.getCon()->close();
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (con != NULL) con->close();
+        if (bd.getCon() != NULL) bd.getCon()->close();
     }
 }
 
 
 void modificar_usuari()
 {
-    sql::mysql::MySQL_Driver* driver = NULL;
-    sql::Connection* con = NULL;
-    sql::Statement* stmt = NULL;
     try {
-        driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("URL_servidor:port", "usuari", "contrasenya");
-        con->setSchema("nom_base_dades");
-        stmt = con->createStatement();
+        ConnexioBD bd;
         string sql = "UPDATE usuari SET name = 'Un altre nom', correu_electronic = 'un altre correu' WHERE sobrenom = 'sobrenom_usuari'";
-        stmt->execute(sql);
-        con->close();
+        bd.exec(sql);
+        bd.getCon()->close();
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (con != NULL) con->close();
+        if (bd.getCon() != NULL) bd.getCon()->close();
     }
 }
 
 
 void esborrar_usuari()
 {
-    sql::mysql::MySQL_Driver* driver = NULL;
-    sql::Connection* con = NULL;
-    sql::Statement* stmt = NULL;
     try {
-        driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("URL_servidor:port", "usuari", "contrasenya");
-        con->setSchema("nom_base_dades");
-        stmt = con->createStatement();
+        ConnexioBD bd;
         string sql = "DELETE FROM usuari WHERE sobrenom = 'sobrenom_usuari'";
-        stmt->execute(sql);
-        con->close();
+        bd.exec(sql);
+        bd.getCon()->close();
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-        if (con != NULL) con->close();
+        if (bd.getCon() != NULL) bd.getCon->close();
     }
 }
 
