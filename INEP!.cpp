@@ -21,7 +21,7 @@ int main()
             std::wcout << "5. Tornar" << std::endl;
             std::wcout << "Opcio: ";
             std::cin >> op;
-            CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
+            CapadePresentacio& presentacio = CapadePresentacio::getInstance();
             switch (op) {
             case 1: presentacio.consultaUsuari(); break;
             case 2: presentacio.modificaUsuari(); break;
