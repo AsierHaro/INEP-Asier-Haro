@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CapaDeDomini.cpp" />
+    <ClCompile Include="CapadePresentacio.cpp" />
     <ClCompile Include="CapaDePresentació.cpp" />
     <ClCompile Include="CercadoraUsuari.cpp" />
     <ClCompile Include="ConnexioBD.cpp" />
