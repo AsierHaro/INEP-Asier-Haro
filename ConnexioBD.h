@@ -6,6 +6,7 @@
 #include <cppconn/statement.h>
 #include <mysql_connection.h>
 #include <mysql_driver.h>
+using namespace std;
 
 class ConnexioBD
 {
@@ -15,6 +16,7 @@ class ConnexioBD
         sql::Statement* stmt = NULL;
 
     public:
+
         ConnexioBD() {
             driver = sql::mysql::get_mysql_driver_instance();
             con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep17", "cooKa9gahd9aak");

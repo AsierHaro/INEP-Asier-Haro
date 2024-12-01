@@ -1,5 +1,7 @@
 #pragma once
 #include "PassarelaUsuari.h"
+#include "DTOUsuari.h"
+#include "CercadoraUsuari.h"
 class CapaDeDomini
 {
     private:
@@ -11,38 +13,19 @@ class CapaDeDomini
             return instance;
         }
 
-        void consulta_usuari(string sobrenom_usuari)
-        {
-            try {
-                ConnexioBD bd;
-                string sql = "SELECT * FROM usuari WHERE sobrenom = 'sobrenom_usuari'";
-                sql::ResultSet* res = bd.execQuery(sql);
-                while (res->next()) {
-                    cout << "Sobrenom: " << res->getString("sobrenom") << endl;
-                    cout << "Nom: " << res->getString("nom") << endl;
-                    cout << "Correu: " << res->getString("correu_electronic") << endl;
-                }
-                bd.getCon()->close();
-            }
-            catch (sql::SQLException& e) {
-                std::cerr << "SQL Error: " << e.what() << std::endl;
-            }
+        DTOUsuari consultaUsuari(std::string sobrenom) {
+            CercadoraUsuari cerca;
+            PassarelaUsuari usu = cerca.cercaPerSobrenom(sobrenom);
+            return DTOUsuari(usu);
         }
 
-        void registrarUsuari(string sobrenom, string usuari, string correu_electronic)
+        void registrarUsuari(string sobrenom, string nom, string correuElectronic)
         {
-            try {
-                ConnexioBD bd;
-                string sql = "INSERT INTO usuari (sobrenom,usuari,correu_electronic) VALUES (asierhr, 'Asier Haro', asier.haro@estudiantat.upc.edu)";
-                bd.exec(sql);
-                bd.getCon()->close();
-            }
-            catch (sql::SQLException& e) {
-                std::cerr << "SQL Error: " << e.what() << std::endl;
-            }
+            PassarelaUsuari usuari(sobrenom, nom, correuElectronic);
+            usuari.insereix();
         }
 
-        void modificar_usuari()
+        void modificar_usuari(string sobrenom, string nom, string correuElectronic)
         {
             try {
                 ConnexioBD bd;

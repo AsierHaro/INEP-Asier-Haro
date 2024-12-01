@@ -30,6 +30,12 @@
     <ClCompile Include="PassarelaUsuari.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="CercadoraUsuari.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="DTOUsuari.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnexioBD.h">
@@ -45,6 +51,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="PassarelaUsuari.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="CercadoraUsuari.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="DTOUsuari.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -33,18 +33,33 @@ class CapaDePresentacio
 			}
 		}
 
-		void processarConsultaUsuari() {
+		void consultaUsuari() {
+			string nomU;
 			std::cout << "Nom usuari:";
 			std::cin >> nomU;
 			try {
-				DTOUsuari usu = cercaUsuari(nomU);
+				CapaDeDomini& domini = CapaDeDomini::getInstance();
+				DTOUsuari usu = domini.consultaUsuari(nomU);
 				std::cout << "Informació usuari: " << usu.obteNom();
 				std::cout << std::endl;
 				std::cout << "Nom: " << usu.obteNom() << std::endl;
 				std::cout << "Correu: " << usu.obteCorreu() << std::endl;
 			}
 			catch (const exception& e) {
-				std::out << "Error: " << e.what() << endl;
+				std::cout << "Error: " << e.what() << endl;
+			}
+		}
+
+		void modificaUsuari() {
+			string nomU;
+			std::cout << "Nom usuari:";
+			std::cin >> nomU;
+			try {
+				CapaDeDomini& domini = CapaDeDomini::getInstance();
+				domini.modificar_usuari();
+			}
+			catch (const exception& e) {
+				std::cout << "Error: " << e.what() << endl;
 			}
 		}
 
