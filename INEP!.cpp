@@ -1,85 +1,9 @@
 // INEP!.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
 
-#include "ConnexioBD.h"
+#include "CapaDePresentació.h"
 using namespace std;
 
-
-void consulta_usuari(string sobrenom_usuari)
-{
-    try {
-        ConnexioBD bd;
-        string sql = "SELECT * FROM usuari WHERE sobrenom='sobrenom_usuari'";
-        sql::ResultSet* res = bd.execQuery(sql);
-        while (res->next()) {
-            cout << "Sobrenom: " << res->getString("sobrenom") << endl;
-            cout << "Nom: " << res->getString("nom") << endl;
-            cout << "Correu: " << res->getString("correu_electronic") << endl;
-        }
-        bd.getCon()->close();
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-
-void registrar_usuari(string sobrenom, string usuari, string correu_electronic)
-{
-    try {
-        ConnexioBD bd;
-        string sql = "INSERT INTO usuari (sobrenom,usuari,correu_electronic) VALUES (asierhr, 'Asier Haro', asier.haro@estudiantat.upc.edu)";
-        bd.exec(sql);
-        bd.getCon()->close();
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-
-void modificar_usuari()
-{
-    try {
-        ConnexioBD bd;
-        string sql = "UPDATE usuari SET name = 'Un altre nom', correu_electronic = 'un altre correu' WHERE sobrenom = 'sobrenom_usuari'";
-        bd.exec(sql);
-        bd.getCon()->close();
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-
-void esborrar_usuari()
-{
-    try {
-        ConnexioBD bd;
-        string sql = "DELETE FROM usuari WHERE sobrenom = 'sobrenom_usuari'";
-        bd.exec(sql);
-        bd.getCon()->close();
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-
-
-void procesarRegistreUsuari() {
-    string sobrenom, nom, correuElectronic;
-    cin >> sobrenom;
-    getline(cin, nom);
-    cin >> correuElectronic;
-    if (sobrenom == " " or nom == " ") {
-        cout << "Error al registrar l'usuari" << endl;
-    }
-    else {
-        registrar_usuari(sobrenom, nom, correuElectronic);
-        cout << "El registre de l'usuari " << nom << " " << "(" << sobrenom << ") s'ha processat correctament." << endl;
-    }
-}
 
 int main()
 {
@@ -89,12 +13,20 @@ int main()
         endl << "3. Consultes" << endl << "4. Sortir" << endl;
     while (cin >> opció && sortir != true) {
         if (opció == 1) {
-            cout << "1. Registre usuari" << endl << "2. Consulta usuari" <<
-                endl << "3. Modifica usuari" << endl << "4. Esborra usuari" << endl << "5. Tornar" << endl;
-            cin >> opció;
-            if (opció == 1) {
-                procesarRegistreUsuari();
+            int op;
+            cout << "1. Consultar usuari" << std::endl;
+            cout << "2. Modificar usuari" << std::endl;
+            cout << "3. Esborrar usuari" << std::endl;
+            std::wcout << "4. Tornar" << std::endl;
+            std::wcout << "Opcio: ";
+            std::cin >> op;
+            CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
+            switch (op) {
+            case 1: presentacio.consultaUsuari(); break;
+            case 2: presentacio.modificaUsuari(); break;
+            case 3: presentacio.esborraUsuari(); break;
             }
+
         }
         else if (opció == 2) {
             cout << "1. Gestio pel·licules" << endl << "2. Gestio series" << "3. Tornar" << endl;
