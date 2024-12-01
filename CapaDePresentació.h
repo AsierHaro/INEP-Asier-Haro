@@ -14,7 +14,7 @@ class CapaDePresentacio
 			return instance;
 		}
 
-		void processarRegistreUsuari() {
+		void registrarUsuari() {
 			std::string sobrenomU, nomU, correuU;
 			std::cout << "** Registra usuari **" << std::endl;
 			std::cout << "Sobrenom: ";
@@ -51,18 +51,37 @@ class CapaDePresentacio
 		}
 
 		void modificaUsuari() {
-			string nomU;
+			std::string sobrenomU, nomU, correuU;
+			std::cout << "** Modificar usuari **" << std::endl;
+			std::cout << "Sobrenom: ";
+			std::cin >> sobrenomU;
+			std::cout << "Nom: ";
+			std::cin >> nomU;
+			std::cout << "Correu electrònic: ";
+			std::cin >> correuU;
 			std::cout << "Nom usuari:";
 			std::cin >> nomU;
 			try {
 				CapaDeDomini& domini = CapaDeDomini::getInstance();
-				domini.modificar_usuari();
+				domini.modificar_usuari(sobrenomU,nomU,correuU);
 			}
 			catch (const exception& e) {
 				std::cout << "Error: " << e.what() << endl;
 			}
 		}
 
+		void esborraUsuari() {
+			string nomU;
+			std::cout << "Nom usuari:";
+			std::cin >> nomU;
+			try {
+				CapaDeDomini& domini = CapaDeDomini::getInstance();
+				domini.esborrar_usuari(nomU);
+			}
+			catch (const exception& e) {
+				std::cout << "Error: " << e.what() << endl;
+			}
+		}
 
 };
 

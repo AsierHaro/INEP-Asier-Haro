@@ -24,9 +24,15 @@ class PassarelaUsuari
 			bd.execQuery(query);
 		}
 
-		void modificaNom(string nom) {
+		void esborra() {
 			ConnexioBD bd;
-			string sql = "UPDATE usuari SET name = 'Un altre nom' WHERE sobrenom = 'sobrenom_usuari'";
+			string sql = "DELETE FROM usuari WHERE sobrenom = 'sobrenom";
+			bd.exec(sql);
+		}
+
+		void modifica() {
+			ConnexioBD bd;
+			string sql = "UPDATE usuari SET name = 'Un altre nom', correu_electronic = 'un altre correu' WHERE sobrenom = 'sobrenom_usuari'";
 			bd.exec(sql);
 		}
 

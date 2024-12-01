@@ -17,7 +17,8 @@ int main()
             cout << "1. Consultar usuari" << std::endl;
             cout << "2. Modificar usuari" << std::endl;
             cout << "3. Esborrar usuari" << std::endl;
-            std::wcout << "4. Tornar" << std::endl;
+            cout << "4. Registrar Usuari" << endl;
+            std::wcout << "5. Tornar" << std::endl;
             std::wcout << "Opcio: ";
             std::cin >> op;
             CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
@@ -25,6 +26,7 @@ int main()
             case 1: presentacio.consultaUsuari(); break;
             case 2: presentacio.modificaUsuari(); break;
             case 3: presentacio.esborraUsuari(); break;
+            case 4: presentacio.registrarUsuari();
             }
 
         }

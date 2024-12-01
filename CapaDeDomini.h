@@ -27,15 +27,14 @@ class CapaDeDomini
 
         void modificar_usuari(string sobrenom, string nom, string correuElectronic)
         {
-            try {
-                ConnexioBD bd;
-                string sql = "UPDATE usuari SET name = 'Un altre nom', correu_electronic = 'un altre correu' WHERE sobrenom = 'sobrenom_usuari'";
-                bd.exec(sql);
-                bd.getCon()->close();
-            }
-            catch (sql::SQLException& e) {
-                std::cerr << "SQL Error: " << e.what() << std::endl;
-            }
+            PassarelaUsuari usuari(sobrenom, nom, correuElectronic);
+            usuari.modifica();
+        }
+
+        void esborrar_usuari(string sobrenom) {
+            CercadoraUsuari cerca;
+            PassarelaUsuari usuari = cerca.cercaPerSobrenom(sobrenom);
+            usuari.esborra();
         }
 };
 
