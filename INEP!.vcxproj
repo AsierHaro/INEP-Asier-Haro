@@ -134,6 +134,7 @@
     <ClCompile Include="INEP!.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CapaDePresentacio.h" />
     <ClInclude Include="ConnexioBD.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

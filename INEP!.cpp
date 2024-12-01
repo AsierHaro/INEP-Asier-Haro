@@ -24,7 +24,7 @@ void consulta_usuari(string sobrenom_usuari)
 }
 
 
-void registrar_usuari()
+void registrar_usuari(string sobrenom, string usuari, string correu_electronic)
 {
     try {
         ConnexioBD bd;
@@ -68,14 +68,16 @@ void esborrar_usuari()
 
 
 void procesarRegistreUsuari() {
-    string sobrenom, nom;
+    string sobrenom, nom, correuElectronic;
     cin >> sobrenom;
     getline(cin, nom);
+    cin >> correuElectronic;
     if (sobrenom == " " or nom == " ") {
         cout << "Error al registrar l'usuari" << endl;
     }
     else {
-        cout << "El registre de l'usuari " << nom <<" " << "(" << sobrenom << ") s'ha processat correctament." << endl;
+        registrar_usuari(sobrenom, nom, correuElectronic);
+        cout << "El registre de l'usuari " << nom << " " << "(" << sobrenom << ") s'ha processat correctament." << endl;
     }
 }
 
