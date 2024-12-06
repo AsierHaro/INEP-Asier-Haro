@@ -1,16 +1,18 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <locale>
 #include "CapaDeDomini.h"
 using namespace std;
-class CapadePresentacio
+class CapaDePresentacio
 {
 private:
-	CapadePresentacio();
+	CapaDePresentacio() {
+	}
 public:
 
-	static CapadePresentacio& getInstance() {
-		static CapadePresentacio instance;
+	static CapaDePresentacio& getInstance() {
+		static CapaDePresentacio instance;
 		return instance;
 	}
 
@@ -21,7 +23,7 @@ public:
 		std::cin >> sobrenomU;
 		std::cout << "Nom: ";
 		std::cin >> nomU;
-		std::cout << "Correu electrònic: ";
+		std::cout << "Correu electronic: ";
 		std::cin >> correuU;
 		CapaDeDomini& domini = CapaDeDomini::getInstance();
 		try {
@@ -29,7 +31,7 @@ public:
 			std::cout << "Usuari registrat correctament!" << std::endl;
 		}
 		catch (const std::exception& e) {
-			std::cout << "Error: << e.what() << std::endl";
+			std::cout << "Error: " << e.what() << std::endl;
 		}
 	}
 
@@ -40,7 +42,7 @@ public:
 		try {
 			CapaDeDomini& domini = CapaDeDomini::getInstance();
 			DTOUsuari usu = domini.consultaUsuari(nomU);
-			std::cout << "Informació usuari: " << usu.obteNom();
+			std::cout << "Informació usuari: " << usu.obteSobrenom();
 			std::cout << std::endl;
 			std::cout << "Nom: " << usu.obteNom() << std::endl;
 			std::cout << "Correu: " << usu.obteCorreu() << std::endl;
@@ -83,5 +85,33 @@ public:
 		}
 	}
 
-};
+	void iniciarSesio() {
+		string sobrenomU, contrasenyaU;
+		cout << "sobrenom: " << endl;
+		cin >> sobrenomU;
+		cout << "contrasenya: " << endl;
+		try {
+			CapaDeDomini& domini = CapaDeDomini::getInstance();
+			domini.iniciarSesio(sobrenomU, contrasenyaU);
+		}
+		catch (const exception& e) {
+			std::cout << "Error: " << e.what() << endl;
+		}
+	}
 
+	void tancarSesio() {
+		string tancar;
+		cout << "Vols tancar la sessio (S/N): ";
+		cin >> tancar;
+		if (tancar == "S") {
+			try {
+				CapaDeDomini& domini = CapaDeDomini::getInstance();
+				domini.tancarSesio();
+			}
+			catch (const exception& e) {
+				std::cout << "Error: " << e.what() << endl;
+			}
+		}
+	}
+
+};

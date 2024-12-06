@@ -5,6 +5,12 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "INEP!", "INEP!.vcxproj", "{392C6F3C-06D2-4FFD-B6BE-C4BFBF151C33}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{814A1031-326F-48A1-839F-35AC3095AE31}"
+	ProjectSection(SolutionItems) = preProject
+		CapaDePresentacio.cpp = CapaDePresentacio.cpp
+		CapaDePresentacio.h = CapaDePresentacio.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

@@ -5,29 +5,41 @@ class PassarelaUsuari
 	private:
 		string sobrenom;
 		string nom;
-		string correuElectronic;
+		string correu_electronic;
+		string contrasenya;
+		string modalitat_subscripcio;
+		string data;
 
 	public:
 
 		PassarelaUsuari() {
 		}
 
-		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU) {
+		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, string modalitat_subscripcioU, string dataU) {
 			sobrenom = sobrenomU; 
 			nom = nomU;
-			correuElectronic = correuElectronicU;
+			correu_electronic = correuElectronicU;
+			contrasenya = contrasenyaU;
+			modalitat_subscripcio = modalitat_subscripcioU;
+			data = dataU;
 		}
 
-		void insereix() {
-			ConnexioBD bd;
-			std::string query = "INSERT INTO usuari (sobrenom,usuari,correu_electronic) VALUES (sobrenom, nom, correuElectronic)";
-			bd.execQuery(query);
+		void insereix() const{
+			ConnexioBD bd; 
+			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, modalitat_subscripcio, data) VALUES ('" 
+				+ sobrenom + "', '"
+				+ nom + "', '"
+				+ correu_electronic + "', '"
+				+ contrasenya + "', '"
+				+ modalitat_subscripcio + "')";
+			bd.exec(query);
 		}
 
-		void esborra() {
+		void esborra() const{
 			ConnexioBD bd;
-			string sql = "DELETE FROM usuari WHERE sobrenom = 'sobrenom";
+			string sql = "DELETE FROM Usuari WHERE Sobrenom = '" + sobrenom + "'";
 			bd.exec(sql);
+			cout << "Usuari correctament esborrat" << endl;
 		}
 
 		void modifica() {
@@ -45,7 +57,10 @@ class PassarelaUsuari
 		}
 
 		string obteCorreuElectronic() {
-			return nom;
+			return correu_electronic;
+		}
+		string obteContrasenya() {
+			return contrasenya;
 		}
 
 		void posaSobrenom(string sobrenomU) {
@@ -57,7 +72,15 @@ class PassarelaUsuari
 		}
 
 		void posaCorreuElectronic(string correuElectronicU) {
-			correuElectronic = correuElectronicU;
+			correu_electronic = correuElectronicU;
+		}
+
+		void posaModalitatSubscripcio(string modalitat_subscripcioU) {
+			modalitat_subscripcio = modalitat_subscripcioU;
+		}
+
+		void posaContrasenya(string contrasenyaU) {
+			contrasenya = contrasenyaU;
 		}
 };
 

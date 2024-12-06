@@ -21,9 +21,6 @@
     <ClCompile Include="ConnexioBD.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="CapaDePresentació.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="CapaDeDomini.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -36,18 +33,15 @@
     <ClCompile Include="DTOUsuari.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="CapadePresentacio.cpp">
+    <ClCompile Include="CapaDePresentacio.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Petitflix.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnexioBD.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="CapaDePresentacio.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="CapaDePresentació.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="CapaDeDomini.h">
@@ -60,6 +54,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="DTOUsuari.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="CapaDePresentacio.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Petitflix.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

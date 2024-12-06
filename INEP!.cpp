@@ -1,53 +1,95 @@
-// INEP!.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
-#include "CapadePresentacio.h"
+#include <locale>
+#include "CapaDePresentacio.h"
 using namespace std;
 
 
 int main()
 {
-    int opció;
+    int opcio;
     bool sortir = false;
-    cout << "1. Gestio usuari" << endl << "2. Gestio continguts" <<
-        endl << "3. Consultes" << endl << "4. Sortir" << endl;
-    while (cin >> opció && sortir != true) {
-        if (opció == 1) {
-            int op;
-            cout << "1. Consultar usuari" << std::endl;
-            cout << "2. Modificar usuari" << std::endl;
-            cout << "3. Esborrar usuari" << std::endl;
-            cout << "4. Registrar Usuari" << endl;
-            std::wcout << "5. Tornar" << std::endl;
-            std::wcout << "Opcio: ";
-            std::cin >> op;
-            CapadePresentacio& presentacio = CapadePresentacio::getInstance();
-            switch (op) {
-            case 1: presentacio.consultaUsuari(); break;
-            case 2: presentacio.modificaUsuari(); break;
-            case 3: presentacio.esborraUsuari(); break;
-            case 4: presentacio.registrarUsuari();
-            }
+    CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
+    while (!sortir) {
+        cout << "1. Iniciar sessio" << endl << "2. Registrar Usuari" << endl 
+            << "3. Consultes" << endl << "4. Sortir" << endl;
+        cout << "Escriu opcio: " << endl;
+        cin >> opcio;
+        if (opcio == 1) {
+            //Usuari inicia sesio;
+            bool usuari_iniciat = true;
+            while (usuari_iniciat && !sortir) {
+                cout << "1. Gestio usuaris" << std::endl;
+                cout << "2. Visualitzar" << std::endl;
+                cout << "3. Consultes" << std::endl;
+                cout << "4. Tancar sessio" << endl;
+                wcout << "5. Sortir" << std::endl;
+                wcout << " Escriu opcio: ";
+                cin >> opcio;
+                if (opcio == 1) {
+                    bool tornar = false;
+                    while (!tornar) {
+                        cout << "1. Consulta usuari" << std::endl;
+                        cout << "2. Modificar usuari" << std::endl;
+                        cout << "3. Modificar contrasenya" << std::endl;
+                        cout << "4. Esborrar usuari" << endl;
+                        wcout << "5. Tornar" << std::endl;
+                        wcout << " Escriu opcio: ";
+                        cin >> opcio;
+                        switch (opcio) {
+                        case 1: presentacio.consultaUsuari(); break;
+                        case 2: presentacio.modificaUsuari(); break;
+                        case 3: break;
+                        case 4: presentacio.esborraUsuari(); break;
+                        case 5: tornar = true; break;
 
+                        }
+                    }
+                }
+                else if (opcio == 2) {
+                    bool tornar = false;
+                    while (!tornar) {
+                        cout << "1. Visualitzar pel·licula" << std::endl;
+                        cout << "2. Visualitzar capitol" << std::endl;
+                        cout << "3. Consultar visualitzacions" << endl;
+                        wcout << "4. Tornar" << std::endl;
+                        wcout << " Escriu opcio: ";
+                        cin >> opcio;
+                    }
+                }
+                else if (opcio == 3) {
+                    bool tornar = false;
+                    while (!tornar) {
+                        cout << "1. Properes estrenes" << std::endl;
+                        cout << "2. Ultimes novetats" << std::endl;
+                        cout << "3. Pel·licules mes vistes" << endl;
+                        wcout << "4. Tornar" << std::endl;
+                        wcout << " Escriu opcio: ";
+                        cin >> opcio;
+                    }
+                }
+                else if (opcio == 4) {
+                    usuari_iniciat = false;
+                }
+                else {
+                    sortir = true;
+                }
+            }
         }
-        else if (opció == 2) {
-            cout << "1. Gestio pel·licules" << endl << "2. Gestio series" << "3. Tornar" << endl;
+        else if (opcio == 2) {
+            presentacio.registrarUsuari();
         }
-        else if (opció == 3) {
-            cout << "1. Consulta per qualificació d’edat" << endl << "2. Ultimes novetats" <<
-                endl << "3. Proximes estrenes" << "4. Tornar" << endl;
+        else if (opcio == 3) {
+            bool tornar = false;
+            while (!tornar) {
+                cout << "1. Properes estrenes" << std::endl;
+                cout << "2. Ultimes novetats" << std::endl;
+                cout << "3. Pel·licules mes vistes" << endl;
+                wcout << "4. Tornar" << std::endl;
+                wcout << " Escriu opcio: ";
+                cin >> opcio;
+            }
         }
-        else if (opció == 4) {
+        else if(opcio == 4) {
             sortir = true;
         }
     }
 }
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
