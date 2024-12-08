@@ -128,7 +128,6 @@ public:
 		cout << "Sessio iniciada correctamente." << endl;
 	}
 
-
 	void tancarSesio() {
 		string tancar;
 		cout << "Vols tancar la sessio (S/N): ";
