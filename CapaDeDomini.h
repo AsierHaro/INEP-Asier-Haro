@@ -1,4 +1,5 @@
 #pragma once
+#include <stdexcept>
 #include "PassarelaUsuari.h"
 #include "DTOUsuari.h"
 #include "CercadoraUsuari.h"
@@ -21,22 +22,24 @@ class CapaDeDomini
             return DTOUsuari(usu);
         }
 
-        void registrarUsuari(string sobrenom, string nom, string correuElectronic, string contrasenyaU, string modalitat_subscripcioU)
+        void registrarUsuari(string sobrenom, string nom, string correuElectronic, string contrasenyaU, int modalitat_subscripcioU, string dataU)
         {
-            PassarelaUsuari usuari(sobrenom, nom, correuElectronic, contrasenyaU, modalitat_subscripcioU);
+            PassarelaUsuari usuari(sobrenom, nom, correuElectronic, contrasenyaU, modalitat_subscripcioU, dataU);
             usuari.insereix();
         }
 
-        void modificar_usuari(string sobrenom, string nom, string correuElectronic, string contrasenyaU, string modalitat_subscripcioU)
+        void modificar_usuari(string sobrenom, string nom, string correuElectronic, string contrasenyaU, int modalitat_subscripcioU, string dataU)
         {
-            PassarelaUsuari usuari(sobrenom, nom, correuElectronic, contrasenyaU, modalitat_subscripcioU);
+            PassarelaUsuari usuari(sobrenom, nom, correuElectronic, contrasenyaU, modalitat_subscripcioU, dataU);
             usuari.modifica();
         }
 
-        void esborrar_usuari(string sobrenom) {
-            CercadoraUsuari cerca;
-            PassarelaUsuari usuari = cerca.cercaPerSobrenom(sobrenom);
-            usuari.esborra();
+        void esborrar_usuari(string contrasenya) {
+            Petitflix& petitflix = Petitflix::getInstance();
+            PassarelaUsuari usu = petitflix.obteUsuari();
+            if (usu.obteContrasenya() == contrasenya) {
+                usu.esborra();
+            }
         }
 
         void iniciarSesio(string sobrenomU, string contrasenyaU) {
@@ -46,6 +49,8 @@ class CapaDeDomini
             if (contrasenya == contrasenyaU) {
                 Petitflix& petitflix = Petitflix::getInstance();
                 petitflix.iniciaSesio(usu);
+            }else{
+                throw std::runtime_error("Contrasenya incorrecta.");
             }
         }
 

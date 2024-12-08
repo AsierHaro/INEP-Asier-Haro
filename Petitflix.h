@@ -20,7 +20,7 @@ class Petitflix
 			usuari.posaSobrenom("");
 			usuari.posaNom("");
 			usuari.posaCorreuElectronic("");
-			usuari.posaModalitatSubscripcio("");
+			usuari.posaModalitatSubscripcio(0);
 			usuari.posaContrasenya("");
 		}
 		PassarelaUsuari obteUsuari() {

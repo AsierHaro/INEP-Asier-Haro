@@ -7,15 +7,16 @@ class PassarelaUsuari
 		string nom;
 		string correu_electronic;
 		string contrasenya;
-		string modalitat_subscripcio;
+		int modalitat_subscripcio;
 		string data;
 
 	public:
 
-		PassarelaUsuari() {
+		PassarelaUsuari(){
+
 		}
 
-		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, string modalitat_subscripcioU, string dataU) {
+		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, int modalitat_subscripcioU, string dataU) {
 			sobrenom = sobrenomU; 
 			nom = nomU;
 			correu_electronic = correuElectronicU;
@@ -26,18 +27,19 @@ class PassarelaUsuari
 
 		void insereix() const{
 			ConnexioBD bd; 
-			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, modalitat_subscripcio, data) VALUES ('" 
+			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, subscripcio, data_naixament) VALUES ('" 
 				+ sobrenom + "', '"
 				+ nom + "', '"
 				+ correu_electronic + "', '"
-				+ contrasenya + "', '"
-				+ modalitat_subscripcio + "')";
+				+ contrasenya + "',"
+				+ std::to_string(modalitat_subscripcio) + ", STR_TO_DATE('"
+				+ data + "', '%d/%m/%Y'))";
 			bd.exec(query);
 		}
 
 		void esborra() const{
 			ConnexioBD bd;
-			string sql = "DELETE FROM Usuari WHERE Sobrenom = '" + sobrenom + "'";
+			string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
 			bd.exec(sql);
 			cout << "Usuari correctament esborrat" << endl;
 		}
@@ -75,7 +77,7 @@ class PassarelaUsuari
 			correu_electronic = correuElectronicU;
 		}
 
-		void posaModalitatSubscripcio(string modalitat_subscripcioU) {
+		void posaModalitatSubscripcio(int modalitat_subscripcioU) {
 			modalitat_subscripcio = modalitat_subscripcioU;
 		}
 

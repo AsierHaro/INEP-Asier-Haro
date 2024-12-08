@@ -14,7 +14,7 @@ int main()
         cout << "Escriu opcio: " << endl;
         cin >> opcio;
         if (opcio == 1) {
-            //Usuari inicia sesio;
+            presentacio.iniciarSesio();
             bool usuari_iniciat = true;
             while (usuari_iniciat && !sortir) {
                 cout << "1. Gestio usuaris" << std::endl;
@@ -67,6 +67,7 @@ int main()
                     }
                 }
                 else if (opcio == 4) {
+                    presentacio.tancarSesio();
                     usuari_iniciat = false;
                 }
                 else {
