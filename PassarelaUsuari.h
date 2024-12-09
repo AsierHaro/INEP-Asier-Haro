@@ -7,7 +7,8 @@ class PassarelaUsuari
 		string nom;
 		string correu_electronic;
 		string contrasenya;
-		int modalitat_subscripcio;
+		int num_subscripcio;
+		string modalitatSubscripcio;
 		string data;
 
 	public:
@@ -16,12 +17,12 @@ class PassarelaUsuari
 
 		}
 
-		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, int modalitat_subscripcioU, string dataU) {
+		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, int num_subscripcioU, string dataU) {
 			sobrenom = sobrenomU; 
 			nom = nomU;
 			correu_electronic = correuElectronicU;
 			contrasenya = contrasenyaU;
-			modalitat_subscripcio = modalitat_subscripcioU;
+			num_subscripcio = num_subscripcioU;
 			data = dataU;
 		}
 
@@ -32,7 +33,7 @@ class PassarelaUsuari
 				+ nom + "', '"
 				+ correu_electronic + "', '"
 				+ contrasenya + "',"
-				+ std::to_string(modalitat_subscripcio) + ", STR_TO_DATE('"
+				+ std::to_string(num_subscripcio) + ", STR_TO_DATE('"
 				+ data + "', '%d/%m/%Y'))";
 			bd.exec(query);
 		}
@@ -65,6 +66,14 @@ class PassarelaUsuari
 			return contrasenya;
 		}
 
+		string obteData() {
+			return data;
+		}
+
+		string obteSubscripcio() {
+			return modalitatSubscripcio;
+		}
+
 		void posaSobrenom(string sobrenomU) {
 			sobrenom = sobrenomU;
 		}
@@ -77,12 +86,16 @@ class PassarelaUsuari
 			correu_electronic = correuElectronicU;
 		}
 
-		void posaModalitatSubscripcio(int modalitat_subscripcioU) {
-			modalitat_subscripcio = modalitat_subscripcioU;
+		void posaModalitatSubscripcio(string modalitat_subscripcioU) {
+			modalitatSubscripcio = modalitat_subscripcioU;
 		}
 
 		void posaContrasenya(string contrasenyaU) {
 			contrasenya = contrasenyaU;
+		}
+
+		void posaData(string dataU) {
+			data = dataU;
 		}
 };
 

@@ -47,14 +47,16 @@ public:
 	}
 
 	void consultaUsuari() {
-		std::cout << "** Registra usuari **" << std::endl;
+		std::cout << "** Consulta usuari **" << std::endl;
 		try {
 			CapaDeDomini& domini = CapaDeDomini::getInstance();
 			DTOUsuari usu = domini.consultaUsuari();
-			std::cout << "Informació usuari: " << usu.obteSobrenom();
-			std::cout << std::endl;
-			std::cout << "Nom: " << usu.obteNom() << std::endl;
-			std::cout << "Correu: " << usu.obteCorreu() << std::endl;
+			std::cout << "Nom complet: " << usu.obteNom() << endl;
+			std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
+			std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
+			std::cout << "Data naixament (DD/MM/AAAA): " << usu.obteData() << std::endl;
+			std::cout << "Modalitat subscripcio: " << usu.obteSubscripcio() << std::endl;
+
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -62,13 +64,15 @@ public:
 	}
 
 	void modificaUsuari() {
+		consultaUsuari();
+		cin.ignore();
+		cin.get();
+		system("cls");
 		std::string sobrenomU, nomU, correuU, contrasenya, dataU;
 		int modalitat_subscripcio;
-		std::cout << "** Registra usuari **" << std::endl;
+		std::cout << "Omplir la informacio que es vol modificar ..." << std::endl;
 		std::cout << "Nom: ";
 		std::cin >> nomU;
-		std::cout << "Sobrenom: ";
-		std::cin >> sobrenomU;
 		std::cout << "Contrasenya: ";
 		std::cin >> contrasenya;
 		std::cout << "Correu electronic: ";
@@ -83,7 +87,7 @@ public:
 		std::cin >> modalitat_subscripcio;
 		try {
 			CapaDeDomini& domini = CapaDeDomini::getInstance();
-			domini.modificar_usuari(sobrenomU, nomU, correuU, contrasenya, modalitat_subscripcio, dataU);
+			domini.modificarUsuari(nomU, correuU, contrasenya, modalitat_subscripcio, dataU);
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;

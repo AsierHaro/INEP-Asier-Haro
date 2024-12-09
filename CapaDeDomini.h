@@ -28,7 +28,7 @@ class CapaDeDomini
             usuari.insereix();
         }
 
-        void modificar_usuari(string sobrenom, string nom, string correuElectronic, string contrasenyaU, int modalitat_subscripcioU, string dataU)
+        void modificarUsuari(string nom, string correuElectronic, string contrasenyaU, int modalitat_subscripcioU, string dataU)
         {
             PassarelaUsuari usuari(sobrenom, nom, correuElectronic, contrasenyaU, modalitat_subscripcioU, dataU);
             usuari.modifica();

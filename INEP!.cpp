@@ -15,6 +15,7 @@ int main()
         cin >> opcio;
         if (opcio == 1) {
             presentacio.iniciarSesio();
+            system("cls");
             bool usuari_iniciat = true;
             while (usuari_iniciat && !sortir) {
                 cout << "1. Gestio usuaris" << std::endl;
@@ -24,6 +25,7 @@ int main()
                 wcout << "5. Sortir" << std::endl;
                 wcout << " Escriu opcio: ";
                 cin >> opcio;
+                system("cls");
                 if (opcio == 1) {
                     bool tornar = false;
                     while (!tornar) {
@@ -34,6 +36,7 @@ int main()
                         wcout << "5. Tornar" << std::endl;
                         wcout << " Escriu opcio: ";
                         cin >> opcio;
+                        system("cls");
                         switch (opcio) {
                         case 1: presentacio.consultaUsuari(); break;
                         case 2: presentacio.modificaUsuari(); break;
