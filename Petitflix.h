@@ -4,7 +4,7 @@ class Petitflix
 {
 	private:
 		PassarelaUsuari usuari;
-		Petitflix() {
+		Petitflix(){
 		}
 	public:
 
@@ -20,7 +20,7 @@ class Petitflix
 			usuari.posaSobrenom("");
 			usuari.posaNom("");
 			usuari.posaCorreuElectronic("");
-			usuari.posaModalitatSubscripcio(0);
+			usuari.posaModalitatSubscripcio("");
 			usuari.posaContrasenya("");
 		}
 		PassarelaUsuari obteUsuari() {

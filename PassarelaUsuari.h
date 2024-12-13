@@ -7,22 +7,27 @@ class PassarelaUsuari
 		string nom;
 		string correu_electronic;
 		string contrasenya;
-		int num_subscripcio;
 		string modalitatSubscripcio;
 		string data;
 
 	public:
 
-		PassarelaUsuari(){
-
+		PassarelaUsuari() {
+			sobrenom = " ";
+			nom = " ";
+			correu_electronic = " ";
+			contrasenya = " ";
+			modalitatSubscripcio = " ";
+			data = " ";
 		}
+		
 
-		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, int num_subscripcioU, string dataU) {
+		PassarelaUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, string num_subscripcioU, string dataU) {
 			sobrenom = sobrenomU; 
 			nom = nomU;
 			correu_electronic = correuElectronicU;
 			contrasenya = contrasenyaU;
-			num_subscripcio = num_subscripcioU;
+			modalitatSubscripcio = num_subscripcioU;
 			data = dataU;
 		}
 
@@ -33,7 +38,7 @@ class PassarelaUsuari
 				+ nom + "', '"
 				+ correu_electronic + "', '"
 				+ contrasenya + "',"
-				+ std::to_string(num_subscripcio) + ", STR_TO_DATE('"
+				+ modalitatSubscripcio + ", STR_TO_DATE('"
 				+ data + "', '%d/%m/%Y'))";
 			bd.exec(query);
 		}

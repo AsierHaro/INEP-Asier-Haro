@@ -2,7 +2,12 @@
 #include <iostream>
 #include <string>
 #include <locale>
-#include "CapaDeDomini.h"
+#include "TxIniciSessio.h"
+#include "TxTancaSessio.h"
+#include "TxRegistraUsuari.h"
+#include "TxConsultarUsuari.h"
+#include "CtrlModificaUsuari.h"
+#include "TxEsborraUsuari.h"
 using namespace std;
 class CapaDePresentacio
 {
@@ -36,9 +41,9 @@ public:
 		std::cout << " > 3. Infantil " << endl;
 		std::cout << "Escull modalitat: ";
 		std::cin >> modalitat_subscripcio;
-		CapaDeDomini& domini = CapaDeDomini::getInstance();
 		try {
-			domini.registrarUsuari(sobrenomU, nomU, correuU, contrasenya, modalitat_subscripcio, dataU);
+			TxRegistraUsuari tx(sobrenomU, nomU, contrasenya, correuU, dataU, modalitat_subscripcio);
+			tx.executar();
 			std::cout << "Usuari registrat correctament!" << std::endl;
 		}
 		catch (const std::exception& e) {
@@ -49,8 +54,9 @@ public:
 	void consultaUsuari() {
 		std::cout << "** Consulta usuari **" << std::endl;
 		try {
-			CapaDeDomini& domini = CapaDeDomini::getInstance();
-			DTOUsuari usu = domini.consultaUsuari();
+			TxConsultarUsuari tx;
+			tx.executar();
+			DTOUsuari usu = tx.obteResultat();
 			std::cout << "Nom complet: " << usu.obteNom() << endl;
 			std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
 			std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
@@ -64,7 +70,8 @@ public:
 	}
 
 	void modificaUsuari() {
-		consultaUsuari();
+		CtrlModificaUsuari ctrl;
+		DTOUsuari usu = ctrl.consultaUsuari();
 		cin.ignore();
 		cin.get();
 		system("cls");
@@ -86,8 +93,7 @@ public:
 		std::cout << "Escull modalitat: ";
 		std::cin >> modalitat_subscripcio;
 		try {
-			CapaDeDomini& domini = CapaDeDomini::getInstance();
-			domini.modificarUsuari(nomU, correuU, contrasenya, modalitat_subscripcio, dataU);
+			ctrl.modificaUsuari(nomU, contrasenya, correuU, dataU, to_string(modalitat_subscripcio));
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -100,11 +106,16 @@ public:
 		std::cout << "Per confirmar l'esborrat, s'ha d'entrar la contrasenya ..." << std::endl;
 		std::cout << "Contrasenya: " << std::endl;
 		std::cin >> contrasenya;
+		system("cls");
 		try {
-			CapaDeDomini& domini = CapaDeDomini::getInstance();
-			domini.esborrar_usuari(contrasenya);
+			TxEsborraUsuari tx(contrasenya);
+			tx.executar();
+			cout << "Usuari esborrat correctament" << endl;
 		}
 		catch (const exception& e) {
+			std::cout << "Error: " << e.what() << endl;
+		}
+		catch (const std::runtime_error& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
 	}
@@ -118,8 +129,8 @@ public:
 			cout << "contrasenya: ";
 			cin >> contrasenyaU;
 			try {
-				CapaDeDomini& domini = CapaDeDomini::getInstance();
-				domini.iniciarSesio(sobrenomU, contrasenyaU);
+				TxIniciSessio tx(sobrenomU, contrasenyaU);
+				tx.executar();
 				iniciat = true;
 			}
 			catch (const exception& e) {
@@ -139,8 +150,8 @@ public:
 		cin >> tancar;
 		if (tancar == "S") {
 			try {
-				CapaDeDomini& domini = CapaDeDomini::getInstance();
-				domini.tancarSesio();
+				TxTancaSessio tx;
+				tx.executar();
 			}
 			catch (const exception& e) {
 				std::cout << "Error: " << e.what() << endl;
