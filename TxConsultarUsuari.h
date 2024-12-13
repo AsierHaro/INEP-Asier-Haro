@@ -6,22 +6,23 @@ class TxConsultarUsuari
 {
 	private:
 		DTOUsuari resultat;
-		PassarelaUsuari usuari;
+		PassarelaUsuari* usuari;
 	public:
 
 		TxConsultarUsuari(){
 		}
+
 		void executar(){
 			Petitflix& petitflix = Petitflix::getInstance();
 			usuari = petitflix.obteUsuari();
-			resultat = DTOUsuari(usuari);
+			resultat = DTOUsuari(*usuari);
 		}
 
 		DTOUsuari obteResultat() {
 			return resultat;
 		}
 
-		PassarelaUsuari obteUsuari() {
+		PassarelaUsuari* obteUsuari() {
 			return usuari;
 		}
 

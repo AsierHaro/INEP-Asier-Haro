@@ -13,6 +13,7 @@ int main()
             << "3. Consultes" << endl << "4. Sortir" << endl;
         cout << "Escriu opcio: " << endl;
         cin >> opcio;
+        system("cls");
         if (opcio == 1) {
             presentacio.iniciarSesio();
             system("cls");
@@ -28,7 +29,7 @@ int main()
                 system("cls");
                 if (opcio == 1) {
                     bool tornar = false;
-                    while (!tornar) {
+                    while (!tornar && usuari_iniciat) {
                         cout << "1. Consulta usuari" << std::endl;
                         cout << "2. Modificar usuari" << std::endl;
                         cout << "3. Modificar contrasenya" << std::endl;
@@ -37,14 +38,14 @@ int main()
                         wcout << " Escriu opcio: ";
                         cin >> opcio;
                         system("cls");
-                        switch (opcio) {
-                        case 1: presentacio.consultaUsuari(); break;
-                        case 2: presentacio.modificaUsuari(); break;
-                        case 3: break;
-                        case 4: presentacio.esborraUsuari(); break;
-                        case 5: tornar = true; break;
-
+                        if (opcio == 1) presentacio.consultaUsuari();
+                        else if (opcio == 2) presentacio.modificaUsuari();
+                        else if (opcio == 3);
+                        else if (opcio == 4){
+                            presentacio.esborraUsuari();
+                            usuari_iniciat = false;
                         }
+                        else tornar = true;
                     }
                 }
                 else if (opcio == 2) {

@@ -32,7 +32,7 @@ class PassarelaUsuari
 		}
 
 		void insereix() const{
-			ConnexioBD bd; 
+			ConnexioBD bd;
 			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, subscripcio, data_naixament) VALUES ('" 
 				+ sobrenom + "', '"
 				+ nom + "', '"
@@ -47,13 +47,21 @@ class PassarelaUsuari
 			ConnexioBD bd;
 			string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
 			bd.exec(sql);
-			cout << "Usuari correctament esborrat" << endl;
 		}
 
 		void modifica() {
 			ConnexioBD bd;
-			string sql = "UPDATE usuari SET name = 'Un altre nom', correu_electronic = 'un altre correu' WHERE sobrenom = 'sobrenom_usuari'";
+			string sql = "UPDATE usuari SET "
+				"nom = '" + nom + "', "
+				"correu_electronic = '" + correu_electronic + "', "
+				"contrasenya = '" + contrasenya + "', "
+				"subscripcio = '" + modalitatSubscripcio + "', "
+				"data_naixament = STR_TO_DATE('" + data + "', '%d/%m/%Y') "
+				"WHERE sobrenom = '" + sobrenom + "';";
 			bd.exec(sql);
+			if (modalitatSubscripcio == "1") modalitatSubscripcio = "Completa";
+			else if (modalitatSubscripcio == "2") modalitatSubscripcio = "Cinefil";
+			else modalitatSubscripcio = "Infantil";
 		}
 
 		string obteSobrenom() {
@@ -80,27 +88,32 @@ class PassarelaUsuari
 		}
 
 		void posaSobrenom(string sobrenomU) {
-			sobrenom = sobrenomU;
+			if(sobrenomU != "") sobrenom = sobrenomU;
 		}
 
 		void posaNom(string nomU) {
-			nom = nomU;
+			if (nomU != "") nom = nomU;
 		}
 
 		void posaCorreuElectronic(string correuElectronicU) {
-			correu_electronic = correuElectronicU;
+			if (correuElectronicU != "") correu_electronic = correuElectronicU;
 		}
 
 		void posaModalitatSubscripcio(string modalitat_subscripcioU) {
-			modalitatSubscripcio = modalitat_subscripcioU;
+			if (modalitat_subscripcioU != "") modalitatSubscripcio = modalitat_subscripcioU;
+			else {
+				if (modalitatSubscripcio == "Completa") modalitatSubscripcio = "1";
+				else if (modalitatSubscripcio == "Cinefil") modalitatSubscripcio = "2";
+				else modalitatSubscripcio = "3";
+			}
 		}
 
 		void posaContrasenya(string contrasenyaU) {
-			contrasenya = contrasenyaU;
+			if (contrasenyaU != "") contrasenya = contrasenyaU;
 		}
 
 		void posaData(string dataU) {
-			data = dataU;
+			if (dataU != "") data = dataU;
 		}
 };
 

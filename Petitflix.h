@@ -17,14 +17,10 @@ class Petitflix
 			usuari = u;
 		}
 		void tancaSesio() {
-			usuari.posaSobrenom("");
-			usuari.posaNom("");
-			usuari.posaCorreuElectronic("");
-			usuari.posaModalitatSubscripcio("");
-			usuari.posaContrasenya("");
+			usuari = PassarelaUsuari();
 		}
-		PassarelaUsuari obteUsuari() {
-			return usuari;
+		PassarelaUsuari* obteUsuari() {
+			return &usuari;
 		}
 
 };

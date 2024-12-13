@@ -15,9 +15,9 @@ class TxEsborraUsuari
 
 		void executar(){
 			Petitflix& petitflix = Petitflix::getInstance();
-			PassarelaUsuari usu = petitflix.obteUsuari();
-			if (usu.obteContrasenya() == contraU) {
-				usu.esborra();
+			PassarelaUsuari* usu = petitflix.obteUsuari();
+			if (usu->obteContrasenya() == contraU) {
+				usu->esborra();
 			}
 			else {
 				throw std::runtime_error("Contrasenya incorrecta.");

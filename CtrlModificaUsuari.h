@@ -4,7 +4,7 @@
 class CtrlModificaUsuari
 {
 	private:
-		PassarelaUsuari usuari;
+		PassarelaUsuari* usuari;
 	public:
 		CtrlModificaUsuari(){
 		}
@@ -18,12 +18,12 @@ class CtrlModificaUsuari
 		}
 		
 		void modificaUsuari(string nomU, string contraU, string correuU, string neixU, string modalitatU) {
-			usuari.posaNom(nomU);
-			usuari.posaContrasenya(contraU);
-			usuari.posaCorreuElectronic(correuU);
-			usuari.posaData(neixU);
-			usuari.posaModalitatSubscripcio(modalitatU);
-			usuari.modifica();
+			usuari->posaNom(nomU);
+			usuari->posaContrasenya(contraU);
+			usuari->posaCorreuElectronic(correuU);
+			usuari->posaData(neixU);
+			usuari->posaModalitatSubscripcio(modalitatU);
+			usuari->modifica();
 		}
 
 };

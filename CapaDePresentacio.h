@@ -42,7 +42,7 @@ public:
 		std::cout << "Escull modalitat: ";
 		std::cin >> modalitat_subscripcio;
 		try {
-			TxRegistraUsuari tx(sobrenomU, nomU, contrasenya, correuU, dataU, modalitat_subscripcio);
+			TxRegistraUsuari tx(sobrenomU, nomU, correuU, contrasenya, dataU, modalitat_subscripcio);
 			tx.executar();
 			std::cout << "Usuari registrat correctament!" << std::endl;
 		}
@@ -57,12 +57,10 @@ public:
 			TxConsultarUsuari tx;
 			tx.executar();
 			DTOUsuari usu = tx.obteResultat();
-			std::cout << "Nom complet: " << usu.obteNom() << endl;
-			std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
-			std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
-			std::cout << "Data naixament (DD/MM/AAAA): " << usu.obteData() << std::endl;
-			std::cout << "Modalitat subscripcio: " << usu.obteSubscripcio() << std::endl;
-
+			cout << usu << endl;
+			cin.ignore();
+			cin.get();
+			system("cls");
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -70,30 +68,36 @@ public:
 	}
 
 	void modificaUsuari() {
+		std::cout << "** Modifica usuari **" << std::endl;
 		CtrlModificaUsuari ctrl;
 		DTOUsuari usu = ctrl.consultaUsuari();
+		cout << usu << endl;
 		cin.ignore();
 		cin.get();
 		system("cls");
-		std::string sobrenomU, nomU, correuU, contrasenya, dataU;
-		int modalitat_subscripcio;
+		string sobrenomU, nomU, correuU, contrasenya, dataU, modalitat_subscripcio;
 		std::cout << "Omplir la informacio que es vol modificar ..." << std::endl;
 		std::cout << "Nom: ";
-		std::cin >> nomU;
+		std::getline(std::cin, nomU);
 		std::cout << "Contrasenya: ";
-		std::cin >> contrasenya;
+		std::getline(std::cin, contrasenya);
 		std::cout << "Correu electronic: ";
-		std::cin >> correuU;
+		std::getline(std::cin, correuU);
 		std::cout << "Data naixament (DD/MM/AAAA): ";
-		std::cin >> dataU;
+		std::getline(std::cin, dataU);
 		std::cout << "Modalitats de subscripcio disponibles " << endl;
 		std::cout << " > 1. Completa " << endl;
 		std::cout << " > 2. Cinefil " << endl;
 		std::cout << " > 3. Infantil " << endl;
 		std::cout << "Escull modalitat: ";
-		std::cin >> modalitat_subscripcio;
+		std::getline(std::cin, modalitat_subscripcio);
 		try {
-			ctrl.modificaUsuari(nomU, contrasenya, correuU, dataU, to_string(modalitat_subscripcio));
+			ctrl.modificaUsuari(nomU, contrasenya, correuU, dataU, modalitat_subscripcio);
+			system("cls");
+			usu = ctrl.consultaUsuari();
+			cout << usu << endl;
+			cin.get();
+			system("cls");
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -102,15 +106,17 @@ public:
 
 	void esborraUsuari() {
 		string contrasenya;
-		std::cout << "** Registra usuari **" << std::endl;
+		std::cout << "** Esborrar usuari **" << std::endl;
 		std::cout << "Per confirmar l'esborrat, s'ha d'entrar la contrasenya ..." << std::endl;
-		std::cout << "Contrasenya: " << std::endl;
+		std::cout << "Contrasenya: ";
 		std::cin >> contrasenya;
 		system("cls");
 		try {
 			TxEsborraUsuari tx(contrasenya);
 			tx.executar();
 			cout << "Usuari esborrat correctament" << endl;
+			TxTancaSessio ty;
+			ty.executar();
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -121,6 +127,7 @@ public:
 	}
 
 	void iniciarSesio() {
+		std::cout << "** Inici sessio **" << std::endl;
 		string sobrenomU, contrasenyaU;
 		bool iniciat = false;
 		while (!iniciat) {
@@ -140,12 +147,13 @@ public:
 				std::cout << "Error: " << e.what() << endl;
 			}
 		}
-		cout << "Sessio iniciada correctamente." << endl;
+		cout << "Sessio iniciada correctament." << endl;
 	}
 
 
 	void tancarSesio() {
 		string tancar;
+		std::cout << "** Tancar sessio **" << std::endl;
 		cout << "Vols tancar la sessio (S/N): ";
 		cin >> tancar;
 		if (tancar == "S") {

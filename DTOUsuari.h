@@ -12,6 +12,16 @@ public:
 		data = usu.obteData();
 		modalitatSubscripcio = usu.obteSubscripcio();
 	}
+
+	friend ostream& operator<<(ostream& os, const DTOUsuari& dto){
+		os << "Nom complet: " << dto.nom << endl;
+		os << "Sobrenom: " << dto.sobrenom << endl;
+		os << "Correu electronic: " << dto.correu << endl;
+		os << "Data naixament (DD/MM/AAAA): " << dto.data << endl;
+		os << "Modalitat subscripcio: " << dto.modalitatSubscripcio << endl;
+		return os;
+	}
+
 	string obteSobrenom() { return sobrenom; }
 	string obteNom() { return nom; }
 	string obteCorreu() { return correu; }
