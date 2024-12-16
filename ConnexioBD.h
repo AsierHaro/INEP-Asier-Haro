@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <map>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
@@ -16,14 +19,37 @@ class ConnexioBD
         sql::Connection* con = NULL;
         sql::Statement* stmt = NULL;
 
-       
-
     public:
         ConnexioBD() {
-            if (con == NULL) {
+            if (con == NULL){
+                map<string, string> config;
+                ifstream file("configuracio.txt");
+
+                if (!file.is_open()) {
+                    cout << "Error: No se ha podido abrir el .txt" << endl;
+                    return;
+                }
+
+                string line;
+                while (getline(file, line)) {
+                    if (line.empty()) continue;
+                    istringstream iss(line);
+                    string key, value;
+                    if (getline(iss, key, '=') && getline(iss, value)) {
+                        config[key] = value;
+                    }
+                }
+                file.close();
+
+                string host = config["host"];
+                string user = config["user"];
+                string password = config["password"];
+                string database = config["database"];
+
+
                 driver = sql::mysql::get_mysql_driver_instance();
-                con = driver->connect("tcp://ubiwan.epsevg.upc.edu:3306", "inep17", "cooKa9gahd9aak");
-                con->setSchema("inep17");
+                con = driver->connect(host, user, password);
+                con->setSchema(database);
                 stmt = con->createStatement();
             }
         }
