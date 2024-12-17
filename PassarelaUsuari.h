@@ -33,12 +33,12 @@ class PassarelaUsuari
 
 		void insereix() const{
 			ConnexioBD bd;
-			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, subscripcio, data_naixament) VALUES ('" 
+			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, subscripcio, data_naixament) VALUES ('"
 				+ sobrenom + "', '"
 				+ nom + "', '"
 				+ correu_electronic + "', '"
-				+ contrasenya + "',"
-				+ modalitatSubscripcio + ", STR_TO_DATE('"
+				+ contrasenya + "', '"
+				+ modalitatSubscripcio + "', STR_TO_DATE('"
 				+ data + "', '%d/%m/%Y'))";
 			bd.exec(query);
 		}
@@ -59,9 +59,6 @@ class PassarelaUsuari
 				"data_naixament = STR_TO_DATE('" + data + "', '%d/%m/%Y') "
 				"WHERE sobrenom = '" + sobrenom + "';";
 			bd.exec(sql);
-			if (modalitatSubscripcio == "1") modalitatSubscripcio = "Completa";
-			else if (modalitatSubscripcio == "2") modalitatSubscripcio = "Cinefil";
-			else modalitatSubscripcio = "Infantil";
 		}
 
 		string obteSobrenom() {
@@ -101,11 +98,6 @@ class PassarelaUsuari
 
 		void posaModalitatSubscripcio(string modalitat_subscripcioU) {
 			if (modalitat_subscripcioU != "") modalitatSubscripcio = modalitat_subscripcioU;
-			else {
-				if (modalitatSubscripcio == "Completa") modalitatSubscripcio = "1";
-				else if (modalitatSubscripcio == "Cinefil") modalitatSubscripcio = "2";
-				else modalitatSubscripcio = "3";
-			}
 		}
 
 		void posaContrasenya(string contrasenyaU) {

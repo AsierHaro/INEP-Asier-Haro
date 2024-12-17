@@ -19,13 +19,13 @@ class TxRegistraUsuari
 			data = " ";
 		}
 
-		TxRegistraUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, string dataNaixamentU, int mS){
+		TxRegistraUsuari(string sobrenomU, string nomU, string correuElectronicU, string contrasenyaU, string dataNaixamentU, string mS){
 			sobrenom = sobrenomU;
 			nom = nomU;
 			correu_electronic = correuElectronicU;
 			contrasenya = contrasenyaU;
 			data = dataNaixamentU;
-			modalitatSubscripcio = to_string(mS);
+			modalitatSubscripcio = mS;
 		}
 
 		void executar() {

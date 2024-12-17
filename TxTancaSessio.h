@@ -9,7 +9,5 @@ class TxTancaSessio
 			Petitflix& petitflix = Petitflix::getInstance();
 			petitflix.tancaSesio();
 		}
-
-
 };
 

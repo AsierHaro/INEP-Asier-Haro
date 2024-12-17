@@ -8,13 +8,13 @@ class CercadoraUsuari
 			PassarelaUsuari u;
 			ConnexioBD bd;
 			string sql = "SELECT u.sobrenom, u.nom, u.contrasenya, u.correu_electronic, DATE_FORMAT(u.data_naixament, '%d/%m/%Y') AS data_formateada, "
-            "m.subscripcio AS nom_subscripcio "
+            "m.nom AS nom_subscripcio "
             "FROM usuari u "
-            "JOIN modalitat_subscripcio m ON u.subscripcio = m.id "
+            "JOIN modalitat_subscripcio m ON u.subscripcio = m.nom "
 			"WHERE u.sobrenom = '" + sobrenomU + "'";
 			sql::ResultSet* res = bd.execQuery(sql);
 			if (!res->next()) {
-				throw runtime_error("Usuari no existeix");
+				throw runtime_error("Hi ha hagut un error amb el sobrenom o la contrasenya");
 			}
 			else {
 				u.posaSobrenom(res->getString("sobrenom"));

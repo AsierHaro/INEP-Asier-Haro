@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <string>
 #include <locale>
@@ -9,11 +8,13 @@
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
 using namespace std;
+
 class CapaDePresentacio
 {
 private:
 	CapaDePresentacio() {
 	}
+
 public:
 
 	static CapaDePresentacio& getInstance() {
@@ -21,34 +22,47 @@ public:
 		return instance;
 	}
 
+	bool sessioIniciada = false;
+
 	void registrarUsuari() {
-		std::string sobrenomU, nomU, correuU, contrasenya, dataU;
-		int modalitat_subscripcio;
+		std::string sobrenomU, nomU, correuU, contrasenya, dataU, modalitat_subscripcio;
 		std::cout << "** Registra usuari **" << std::endl;
 		std::cout << "Nom: ";
-		std::cin >> nomU;
-		std::cout << "Sobrenom: ";
-		std::cin >> sobrenomU;
+		cin.ignore();
+		std::getline(cin, nomU);
+		cout << "Sobrenom: ";
+		cin >> sobrenomU;
 		std::cout << "Contrasenya: ";
-		std::cin >> contrasenya;
+		cin >> contrasenya;
 		std::cout << "Correu electronic: ";
-		std::cin >> correuU;
+		cin >> correuU;
 		std::cout << "Data naixament (DD/MM/AAAA): ";
-		std::cin >> dataU;
+		cin >> dataU;
 		std::cout << "Modalitats de subscripcio disponibles " << endl;
 		std::cout << " > 1. Completa " << endl;
 		std::cout << " > 2. Cinefil " << endl;
 		std::cout << " > 3. Infantil " << endl;
 		std::cout << "Escull modalitat: ";
-		std::cin >> modalitat_subscripcio;
+		cin >> modalitat_subscripcio;
+		system("cls");
 		try {
 			TxRegistraUsuari tx(sobrenomU, nomU, correuU, contrasenya, dataU, modalitat_subscripcio);
 			tx.executar();
 			std::cout << "Usuari registrat correctament!" << std::endl;
 		}
-		catch (const std::exception& e) {
-			std::cout << "Error: " << e.what() << std::endl;
+		catch (sql::SQLException& e) {
+			if (e.getErrorCode() == 1452) {
+				cout << "Modalitat no existeix" << endl;
+			}
+			else if (e.getErrorCode() == 1062) {
+				string errorMessage = e.what();
+				if(errorMessage.find("sobrenom") != string::npos) cout << "Ja existeix un usuari amb aquest sobrenom" << endl;
+				else if(errorMessage.find("correu_electronic") != string::npos) cout << "Ja existeix un usuari amb aquest correu electronic" << endl;
+			}
 		}
+		cin.ignore();
+		cin.get();
+		system("cls");
 	}
 
 	void consultaUsuari() {
@@ -90,18 +104,20 @@ public:
 		std::cout << " > 2. Cinefil " << endl;
 		std::cout << " > 3. Infantil " << endl;
 		std::cout << "Escull modalitat: ";
-		std::getline(std::cin, modalitat_subscripcio);
+		std::getline(cin, modalitat_subscripcio);
 		try {
 			ctrl.modificaUsuari(nomU, contrasenya, correuU, dataU, modalitat_subscripcio);
 			system("cls");
 			usu = ctrl.consultaUsuari();
 			cout << usu << endl;
-			cin.get();
-			system("cls");
 		}
-		catch (const exception& e) {
-			std::cout << "Error: " << e.what() << endl;
+		catch (sql::SQLException& e) {
+			if (e.getErrorCode() == 1062) {
+				cout << "El nou  correu ja existeix" << endl;
+			}
 		}
+		cin.get();
+		system("cls");
 	}
 
 	void esborraUsuari() {
@@ -117,39 +133,39 @@ public:
 			cout << "Usuari esborrat correctament" << endl;
 			TxTancaSessio ty;
 			ty.executar();
-		}
-		catch (const exception& e) {
-			std::cout << "Error: " << e.what() << endl;
+			sessioIniciada = false;
 		}
 		catch (const std::runtime_error& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
+		cin.ignore();
+		cin.get();
+		system("cls");
 	}
 
-	void iniciarSesio() {
-		std::cout << "** Inici sessio **" << std::endl;
+	void iniciSesio() {
 		string sobrenomU, contrasenyaU;
-		bool iniciat = false;
-		while (!iniciat) {
-			cout << "sobrenom: ";
-			cin >> sobrenomU;
-			cout << "contrasenya: ";
-			cin >> contrasenyaU;
-			try {
-				TxIniciSessio tx(sobrenomU, contrasenyaU);
-				tx.executar();
-				iniciat = true;
-			}
-			catch (const exception& e) {
-				std::cout << "Error: " << e.what() << endl;
-			}
-			catch (const std::runtime_error& e) {
-				std::cout << "Error: " << e.what() << endl;
-			}
+		std::cout << "** Inici sessio **" << std::endl;
+		cout << "sobrenom: ";
+		cin >> sobrenomU;
+		cout << "contrasenya: ";
+		cin >> contrasenyaU;
+		try {
+			TxIniciSessio tx(sobrenomU, contrasenyaU);
+			tx.executar();
+			sessioIniciada = true;
 		}
-		cout << "Sessio iniciada correctament." << endl;
+		catch (const std::runtime_error& e) {
+			std::cout << "Error: " << e.what() << endl;
+		}
+	
+		if (sessioIniciada) {
+			system("cls");
+			cout << "Sessio iniciada correctament." << endl;
+		}
+		cin.ignore();
+		cin.get();
 	}
-
 
 	void tancarSesio() {
 		string tancar;
@@ -157,14 +173,11 @@ public:
 		cout << "Vols tancar la sessio (S/N): ";
 		cin >> tancar;
 		if (tancar == "S") {
-			try {
-				TxTancaSessio tx;
-				tx.executar();
-			}
-			catch (const exception& e) {
-				std::cout << "Error: " << e.what() << endl;
-			}
+			TxTancaSessio tx;
+			tx.executar();
+			sessioIniciada = false;
 		}
+		system("cls");
 	}
 
 };

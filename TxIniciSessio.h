@@ -1,4 +1,3 @@
-#pragma once
 #include "cercadoraUsuari.h"
 #include "PassarelaUsuari.h"
 #include "PetitFlix.h"
@@ -26,7 +25,7 @@ public:
 			petitflix.iniciaSesio(usu);
 		}
 		else {
-			throw std::runtime_error("Contrasenya incorrecta.");
+			throw std::runtime_error("Hi ha hagut un error amb el sobrenom o la contrasenya");
 		}
 	}
 };

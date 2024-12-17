@@ -20,7 +20,7 @@ class TxEsborraUsuari
 				usu->esborra();
 			}
 			else {
-				throw std::runtime_error("Contrasenya incorrecta.");
+				throw std::runtime_error("La contrasenya no es correcta, l'usuari no s'esborrat");
 			}
 		}
 
