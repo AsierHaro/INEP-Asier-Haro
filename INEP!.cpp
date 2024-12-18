@@ -49,7 +49,7 @@ int main()
                             system("cls");
                             if (opcio == 1) presentacio.consultaUsuari();
                             else if (opcio == 2) presentacio.modificaUsuari();
-                            else if (opcio == 3);
+                            else if (opcio == 3) presentacio.modificar_contrasenya();
                             else if (opcio == 4) presentacio.esborraUsuari();
                             else tornar = true;
                         }
@@ -97,6 +97,9 @@ int main()
         else if (opcio == 3) {
             bool tornar = false;
             while (!tornar) {
+                cout << "-----------------------" << endl;
+                cout << "      Consultes" << endl;
+                cout << "-----------------------" << endl;
                 cout << "1. Properes estrenes" << std::endl;
                 cout << "2. Ultimes novetats" << std::endl;
                 cout << "3. Pel·licules mes vistes" << endl;

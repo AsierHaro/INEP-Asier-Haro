@@ -135,6 +135,7 @@
     <ClCompile Include="CercadoraVisualitzaPel.cpp" />
     <ClCompile Include="CercadoraVisualitzaSerie.cpp" />
     <ClCompile Include="ConnexioBD.cpp" />
+    <ClCompile Include="CtrlModificarContrasenya.cpp" />
     <ClCompile Include="CtrlModificaUsuari.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP!.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
     <ClInclude Include="ConnexioBD.h" />
+    <ClInclude Include="CtrlModificarContrasenya.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaUsuari.h" />
