@@ -6,7 +6,6 @@
 #include "TxRegistraUsuari.h"
 #include "TxConsultarUsuari.h"
 #include "CtrlModificaUsuari.h"
-#include "CtrlModificarContrasenya.h"
 #include "TxEsborraUsuari.h"
 using namespace std;
 
@@ -80,39 +79,6 @@ public:
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
-	}
-
-	void modificar_contrasenya() {
-		string contrA, contrN;
-		CtrlModificarContrasenya ctrl;
-		while (ctrl.vol_modificar) {
-			cout << "** Modifica usuari **" << endl;
-			cout << "Antiga contrasenya: ";
-			cin >> contrA;
-			cout << "Nova contrasenya: ";
-			cin >> contrN;
-			try {
-				ctrl.modificaUsuari(contrA, contrN);
-				cout << "S'ha modificat la contrasenya correctament" << endl;
-			}
-			catch (const std::runtime_error& e) {
-				std::cout << "Error: " << e.what() << endl;
-				if (ctrl.vol_modificar) {
-					string opcio;
-					cout << "Vols tornar a introduir una nova contrasenya (S/N): ";
-					cin >> opcio;
-					if (opcio == "N") {
-						ctrl.vol_modificar = false;
-					}
-					else if (opcio == "S") {
-						system("cls");
-					}
-				}
-			}
-		}
-		cin.ignore();
-		cin.get();
-		system("cls");
 	}
 
 	void modificaUsuari() {

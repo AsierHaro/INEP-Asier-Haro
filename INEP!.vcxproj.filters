@@ -69,9 +69,6 @@
     <ClCompile Include="PassarelaVisualitzaSerie.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="CtrlModificarContrasenya.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnexioBD.h">
@@ -123,9 +120,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="PassarelaVisualitzaSerie.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="CtrlModificarContrasenya.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

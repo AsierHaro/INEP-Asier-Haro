@@ -41,16 +41,14 @@ int main()
                             cout << "-----------------------" << endl;
                             cout << "1. Consulta usuari" << std::endl;
                             cout << "2. Modificar usuari" << std::endl;
-                            cout << "3. Modificar contrasenya" << std::endl;
-                            cout << "4. Esborrar usuari" << endl;
-                            wcout << "5. Tornar" << std::endl;
+                            cout << "3. Esborrar usuari" << endl;
+                            wcout << "4. Tornar" << std::endl;
                             wcout << " Escriu opcio: ";
                             cin >> opcio;
                             system("cls");
                             if (opcio == 1) presentacio.consultaUsuari();
                             else if (opcio == 2) presentacio.modificaUsuari();
-                            else if (opcio == 3) presentacio.modificar_contrasenya();
-                            else if (opcio == 4) presentacio.esborraUsuari();
+                            else if (opcio == 3) presentacio.esborraUsuari();
                             else tornar = true;
                         }
                     }
