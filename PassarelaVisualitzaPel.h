@@ -4,24 +4,31 @@ class PassarelaVisualitzaPel
 {
 	private:
 		string sobrenom;
-		string titolPelicula;
-		string data;
-		int numVisualitzacions;
+		string Nom;
+		string Data;
+		string Descripcio;
+		int Duracio;
+		int Visualitzacio;
+		int Edat;
+		string Relacionades;
+
 
 	public:
 		PassarelaVisualitzaPel() {
-			string Nom = "";
-			string Descripcio = "";
-			string Edat = "";
-			string Data = "";
-			string Duracio = " ";
-			string Visualitzacio = " ";
-			string Relacionades = " ";
+			sobrenom;
+			Nom = "";
+			Descripcio = "";
+			Edat = 0;
+			Data = "";
+			Duracio = 0;
+			Visualitzacio = 0;
+			Relacionades = "";
 		}
 
 
-		PassarelaUsuari(string NomP, string DescripcioP, string EdatP, string DataP, string DuracioP, string VisualitzacioP, string RelacionadesP) {
+		PassarelaVisualitzaPel(string NomP, string sobrenomP, string DescripcioP, int EdatP, string DataP, int DuracioP, int VisualitzacioP, string RelacionadesP) {
 			Nom = NomP;
+			sobrenom = sobrenomP;
 			Descripcio = DescripcioP;
 			Edat = EdatP;
 			Data = DataP;
@@ -32,30 +39,34 @@ class PassarelaVisualitzaPel
 
 		void insereix() const {
 			ConnexioBD bd;
-			std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, subscripcio, data_naixament) VALUES ('"
-				+ sobrenom + "', '"
-				+ nom + "', '"
-				+ correu_electronic + "', '"
-				+ contrasenya + "', '"
-				+ modalitatSubscripcio + "', STR_TO_DATE('"
-				+ data + "', '%d/%m/%Y'))";
+			std::string query = "INSERT INTO Pel (Descripcio,sobrenom, Nom, Data,Relacionades,Duracio,Visualitzacio,Edat) VALUES ('"+
+				Nom + "', '" +
+				sobrenom + "', '" +
+				Descripcio + "', " +
+				std::to_string(Edat) + ", STR_TO_DATE('" +
+				Data + "', '%d/%m/%Y'), " +
+				std::to_string(Duracio) + ", " +
+				std::to_string(Visualitzacio) + ", '" +
+				Relacionades + "')";
 			bd.exec(query);
 		}
 
 		void esborra() const {
 			ConnexioBD bd;
-			string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
+			string sql = "DELETE FROM Pel WHERE sobrenom = '" + sobrenom + "'";
 			bd.exec(sql);
 		}
 
 		void modifica() {
 			ConnexioBD bd;
-			string sql = "UPDATE usuari SET "
-				"nom = '" + nom + "', "
-				"correu_electronic = '" + correu_electronic + "', "
-				"contrasenya = '" + contrasenya + "', "
-				"subscripcio = '" + modalitatSubscripcio + "', "
-				"data_naixament = STR_TO_DATE('" + data + "', '%d/%m/%Y') "
+			string sql = "UPDATE Pel SET "
+				"Nom = '" + Nom + "', "
+				"Descripcio = '" + Descripcio + "', "
+				"Edat = " + std::to_string(Edat) + ", "
+				"Data = STR_TO_DATE('" + Data + "', '%d/%m/%Y'), "
+				"Duracio = " + std::to_string(Duracio) + ", "
+				"Visualitzacio = " + std::to_string(Visualitzacio) + ", "
+				"Relacionades = '" + Relacionades + "' "
 				"WHERE sobrenom = '" + sobrenom + "';";
 			bd.exec(sql);
 		}
@@ -65,22 +76,29 @@ class PassarelaVisualitzaPel
 		}
 
 		string obteNom() {
-			return nom;
+			return Nom;
 		}
 
-		string obteCorreuElectronic() {
-			return correu_electronic;
+		string obteDescripcio() {
+			return Descripcio;
 		}
-		string obteContrasenya() {
-			return contrasenya;
+		int obteEdat() {
+			return Edat;
 		}
 
 		string obteData() {
-			return data;
+			return Data;
 		}
 
-		string obteSubscripcio() {
-			return modalitatSubscripcio;
+		int obteDuracio() {
+			return Duracio;
+		}
+		int obteVisualitzacio() {
+			return Visualitzacio;
+		}
+
+		string obteRelacioanades() {
+			return Relacionades;
 		}
 };
 

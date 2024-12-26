@@ -5,12 +5,13 @@ class DTOPel {
 public:
 	DTOPel() {}
 	DTOPel(PassarelaVisualitzaPel pel) {
+		sobrenom = pel.obteSobrenom();
 		Nom = pel.obteNom();
 		Descripcio = pel.obteDescripcio();
 		Edat = pel.obteEdat();
 		Data = pel.obteData();
 		Duracio = pel.obteDuracio();
-		Visualitzacio = pelobte.Visualitzacio();
+		Visualitzacio = pel.obteVisualitzacio();
 		Relacionades = pel.obteRelacioanades();
 
 	}
@@ -23,6 +24,7 @@ public:
 		return os;
 	}
 	string obteNom() { return Nom; }
+	string obteSobrenom() { return sobrenom; }
 	string obteDescripcio() { return Descripcio; }
 	string obteEdat() { return Edat; }
 	string obteData() { return Data; }
@@ -32,9 +34,10 @@ public:
 private:
 	string Nom = "";
 	string Descripcio = "";
-	string Edat = "";
+	string Edat = 0;
 	string Data = "";
-	string Duracio = " ";
-	string Visualitzacio = " ";
+	string Duracio = 0;
+	string Visualitzacio = 0;
 	string Relacionades = " ";
+	string sobrenom = "";
 };
