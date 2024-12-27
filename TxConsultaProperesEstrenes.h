@@ -1,13 +1,18 @@
 #pragma once
 #include "Petitflix.h"
-#include "PassarelaUsuari.h"
+#include "PassarelaPel·lícula.h"
 
 
-class ConsultarProperesEstrenes
+class TxConsultarProperesEstrenes
 {
-private:
-	PassarelaUsuari* usuari;
-public:
+	private:
 
-	
+	public:
+		TxConsultarProperesEstrenes() {	
+		}
+
+		PassarelaPel·lícula executar() {
+
+		}
+
 };
