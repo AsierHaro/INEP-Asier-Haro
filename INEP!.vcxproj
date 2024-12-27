@@ -151,13 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
-    <ClInclude Include="CercadoraPel·lícula.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
-    <ClInclude Include="DTOPel.lícula.h" />
+    <ClInclude Include="DTOPel.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaContingut.h" />
     <ClInclude Include="PassarelaUsuari.h" />
@@ -171,7 +170,7 @@
     <ClInclude Include="TxIniciSessio.h" />
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
-    <ClInclude Include="TxVisualitzarPel·lícula.h" />
+    <ClInclude Include="TxVisualitzarPel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,50 +4,34 @@ class PassarelaVisualitzaPel
 {
 	private:
 		string sobrenom;
-		string Nom;
-		string Data;
-		string Descripcio;
-		int Duracio;
-		int Visualitzacio;
-		int Edat;
-		string Relacionades;
+		string titolPel;
+		string data;
+		int numVisualitzacions;
 
 
 	public:
 		PassarelaVisualitzaPel() {
-			sobrenom;
-			Nom = "";
-			Descripcio = "";
-			Edat = 0;
-			Data = "";
-			Duracio = 0;
-			Visualitzacio = 0;
-			Relacionades = "";
+			sobrenom = "";
+			titolPel= "";
+			data = "";
+			numVisualitzacions = 0;
 		}
 
 
-		PassarelaVisualitzaPel(string NomP, string sobrenomP, string DescripcioP, int EdatP, string DataP, int DuracioP, int VisualitzacioP, string RelacionadesP) {
-			Nom = NomP;
+		PassarelaVisualitzaPel(string NomP, string sobrenomP,string DataP, int VisualitzacioP) {
+			titolPel = NomP;
 			sobrenom = sobrenomP;
-			Descripcio = DescripcioP;
-			Edat = EdatP;
-			Data = DataP;
-			Duracio = DuracioP;
-			Visualitzacio = VisualitzacioP;
-			Relacionades = RelacionadesP;
+			data = DataP;
+			numVisualitzacions = VisualitzacioP;
 		}
 
 		void insereix() const {
 			ConnexioBD bd;
-			std::string query = "INSERT INTO Pel (Descripcio,sobrenom, Nom, Data,Relacionades,Duracio,Visualitzacio,Edat) VALUES ('"+
-				Nom + "', '" +
+			std::string query = "INSERT INTO Pel (sobrenom, titolPel, data,numVisualitzacions) VALUES ('" +
+				titolPel + "', '" +
 				sobrenom + "', '" +
-				Descripcio + "', " +
-				std::to_string(Edat) + ", STR_TO_DATE('" +
-				Data + "', '%d/%m/%Y'), " +
-				std::to_string(Duracio) + ", " +
-				std::to_string(Visualitzacio) + ", '" +
-				Relacionades + "')";
+				data + "', '%d/%m/%Y'), " +
+				std::to_string(numVisualitzacions) + ")";
 			bd.exec(query);
 		}
 
@@ -60,13 +44,9 @@ class PassarelaVisualitzaPel
 		void modifica() {
 			ConnexioBD bd;
 			string sql = "UPDATE Pel SET "
-				"Nom = '" + Nom + "', "
-				"Descripcio = '" + Descripcio + "', "
-				"Edat = " + std::to_string(Edat) + ", "
-				"Data = STR_TO_DATE('" + Data + "', '%d/%m/%Y'), "
-				"Duracio = " + std::to_string(Duracio) + ", "
-				"Visualitzacio = " + std::to_string(Visualitzacio) + ", "
-				"Relacionades = '" + Relacionades + "' "
+				"titolPel = '" + titolPel + "', "
+				"data = STR_TO_DATE('" + data + "', '%d/%m/%Y'), "
+				"numVisualitzacions = " + std::to_string(numVisualitzacions) + ", "
 				"WHERE sobrenom = '" + sobrenom + "';";
 			bd.exec(sql);
 		}
@@ -75,30 +55,16 @@ class PassarelaVisualitzaPel
 			return sobrenom;
 		}
 
-		string obteNom() {
-			return Nom;
-		}
-
-		string obteDescripcio() {
-			return Descripcio;
-		}
-		int obteEdat() {
-			return Edat;
+		string obteTitolPel() {
+			return titolPel;
 		}
 
 		string obteData() {
-			return Data;
+			return data;
 		}
 
-		int obteDuracio() {
-			return Duracio;
-		}
-		int obteVisualitzacio() {
-			return Visualitzacio;
-		}
-
-		string obteRelacioanades() {
-			return Relacionades;
+		int obtenNumVisualitzacions() {
+			return numVisualitzacions;
 		}
 };
 
