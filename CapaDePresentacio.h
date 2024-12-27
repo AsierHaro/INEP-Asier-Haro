@@ -186,7 +186,7 @@ public:
 		std::cout << "** Properes estrenes **" << std::endl;
 		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
 		try{
-			TxConsultaProperesEstrenes tx;
+			
 		}
 		catch(const std::runtime_error& e){
 			std::cout << "Error: " << e.what() << endl;

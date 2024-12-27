@@ -1,1 +1,0 @@
-#include "PassarelaPel·lícula.h"
