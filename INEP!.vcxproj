@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraPel·lícula.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
@@ -158,10 +159,12 @@
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="DTOPel.lícula.h" />
     <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="PassarelaContingut.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
     <ClInclude Include="Petitflix.h" />
+    <ClInclude Include="TxConsultaProperesEstrenes.h" />
     <ClInclude Include="TxConsultarUsuari.h" />
     <ClInclude Include="TxEsborraUsuari.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />

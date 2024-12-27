@@ -180,4 +180,10 @@ public:
 		system("cls");
 	}
 
+	void ConsultaProperesEstrenes() {
+		std::cout << "** Properes estrenes **" << std::endl;
+		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
+
+	}
+
 };
