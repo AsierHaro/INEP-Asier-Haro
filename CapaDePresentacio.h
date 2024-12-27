@@ -168,7 +168,6 @@ public:
 		cin.ignore();
 		cin.get();
 	}
-
 	void tancarSesio() {
 		string tancar;
 		std::cout << "** Tancar sessio **" << std::endl;
@@ -185,12 +184,7 @@ public:
 	void ConsultaProperesEstrenes() {
 		std::cout << "** Properes estrenes **" << std::endl;
 		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
-		try{
-			
-		}
-		catch(const std::runtime_error& e){
-			std::cout << "Error: " << e.what() << endl;
-		}
+		//TxConsultaProperesEstrenes tx;
 	}
 
 };

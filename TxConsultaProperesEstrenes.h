@@ -1,6 +1,6 @@
 #pragma once
-#include "Petitflix.h"
-#include "PassarelaPel·lícula.h"
+#include "PassarelaEstrenes.h"
+#include "CercadoraPropersEstrens.h"
 
 
 class TxConsultarProperesEstrenes
@@ -8,11 +8,12 @@ class TxConsultarProperesEstrenes
 	private:
 
 	public:
-		TxConsultarProperesEstrenes() {	
+		TxConsultarProperesEstrenes(){	
 		}
 
-		PassarelaPel·lícula executar() {
-
+		vector<PassarelaEstrenes> executar() {
+			CercadoraPropersEstrens cerca;
+			return cerca.cercaEstrens();
 		}
 
 };
