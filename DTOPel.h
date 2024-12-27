@@ -14,23 +14,23 @@ public:
         numVisualitzacions = pel.obtenNumVisualitzacions();
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const DTOPel& dto) {
-        os << "Sobrenom: " << dto.sobrenom << std::endl;
-        os << "Títol pel·lícula: " << dto.titolPel << std::endl;
-        os << "Data visualització: " << dto.data << std::endl;
-        os << "Número de visualitzacions: " << dto.numVisualitzacions << std::endl;
+    friend std::ostream& operator<<(ostream& os, const DTOPel& dto) {
+        os << "Sobrenom: " << dto.sobrenom << endl;
+        os << "Títol pel·lícula: " << dto.titolPel << endl;
+        os << "Data visualització: " << dto.data << endl;
+        os << "Número de visualitzacions: " << dto.numVisualitzacions << endl;
         return os;
     }
 
-    std::string obteSobrenom() const { return sobrenom; }
-    std::string obteTitolPel() const { return titolPel; }
-    std::string obteData() const { return data; }
+    string obteSobrenom() const { return sobrenom; }
+    string obteTitolPel() const { return titolPel; }
+    string obteData() const { return data; }
     int obteNumVisualitzacions() const { return numVisualitzacions; }
 
 private:
  
-    std::string sobrenom = "";
-    std::string titolPel = "";
-    std::string data = "";
+    string sobrenom = "";
+    string titolPel = "";
+    string data = "";
     int numVisualitzacions = 0;
 };
