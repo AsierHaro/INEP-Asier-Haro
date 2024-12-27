@@ -7,6 +7,8 @@
 #include "TxConsultarUsuari.h"
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
+#include "TxConsultaProperesEstrenes.h"
+
 using namespace std;
 
 class CapaDePresentacio
@@ -183,7 +185,12 @@ public:
 	void ConsultaProperesEstrenes() {
 		std::cout << "** Properes estrenes **" << std::endl;
 		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
-
+		try{
+			TxConsultaProperesEstrenes tx;
+		}
+		catch(const std::runtime_error& e){
+			std::cout << "Error: " << e.what() << endl;
+		}
 	}
 
 };

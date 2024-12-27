@@ -138,10 +138,14 @@
     <ClCompile Include="CtrlModificaUsuari.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP!.cpp" />
+    <ClCompile Include="PassarelaContingut.cpp" />
+    <ClCompile Include="PassarelaPel·lícula.cpp" />
+    <ClCompile Include="PassarelaSerie.h" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
     <ClCompile Include="PassarelaVisualitzaSerie.cpp" />
     <ClCompile Include="Petitflix.cpp" />
+    <ClCompile Include="TxConsultarProperesEstrenes.cpp" />
     <ClCompile Include="TxConsultarUsuari.cpp" />
     <ClCompile Include="TxEsborraUsuari.cpp" />
     <ClCompile Include="TxInfoVisualitzacions.cpp" />
@@ -159,7 +163,10 @@
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="DTOPel.lícula.h" />
     <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="PassarelaCapitol.h" />
     <ClInclude Include="PassarelaContingut.h" />
+    <ClInclude Include="PassarelaPel·lícula.h" />
+    <ClInclude Include="PassarelaTemporada.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
