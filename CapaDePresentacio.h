@@ -7,11 +7,16 @@
 #include "TxConsultarUsuari.h"
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
+#include "TxConsultaProperesEstrenes.h"
+#include "TxVisualitzarPel.h"
+#include "DTOPel.h"
+
 using namespace std;
 
 class CapaDePresentacio
 {
 private:
+	//TxVisualitzaPel tx;
 	CapaDePresentacio() {
 	}
 
@@ -56,8 +61,8 @@ public:
 			}
 			else if (e.getErrorCode() == 1062) {
 				string errorMessage = e.what();
-				if(errorMessage.find("sobrenom") != string::npos) cout << "Ja existeix un usuari amb aquest sobrenom" << endl;
-				else if(errorMessage.find("correu_electronic") != string::npos) cout << "Ja existeix un usuari amb aquest correu electronic" << endl;
+				if (errorMessage.find("sobrenom") != string::npos) cout << "Ja existeix un usuari amb aquest sobrenom" << endl;
+				else if (errorMessage.find("correu_electronic") != string::npos) cout << "Ja existeix un usuari amb aquest correu electronic" << endl;
 			}
 		}
 		cin.ignore();
@@ -158,7 +163,7 @@ public:
 		catch (const std::runtime_error& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
-	
+
 		if (sessioIniciada) {
 			system("cls");
 			cout << "Sessio iniciada correctament." << endl;
@@ -166,7 +171,6 @@ public:
 		cin.ignore();
 		cin.get();
 	}
-
 	void tancarSesio() {
 		string tancar;
 		std::cout << "** Tancar sessio **" << std::endl;
@@ -180,4 +184,38 @@ public:
 		system("cls");
 	}
 
+	void ConsultaProperesEstrenes() {
+		std::cout << "** Properes estrenes **" << std::endl;
+		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
+		//TxConsultaProperesEstrenes tx;
+	}
+
+	void VisualitzaPel() {
+		string titolPel,continuar;
+		std::cout << "** Visualitza Pel.lícula **" << std::endl;
+		std::cout << "Nom pel.lícula: ";
+		std::cin >> titolPel;
+		system("cls");
+		try {
+			TxVisualitzaPel tx(titolPel);
+			tx.executar();
+			std::cout << "Informacio pel.lícula ..." << std::endl;
+			DTOPel pel;
+			std::cout << pel << endl;
+			std::cout << "vols continuar amb la visulització (S/N): " << std::endl;
+			std::cin >> continuar;
+			if (continuar == "S") {
+
+			}
+		
+
+
+		}
+		catch (const std::runtime_error& e) {
+			std::cout << "Error: " << e.what() << endl;
+		}
+		cin.ignore();
+		cin.get();
+		system("cls");
+	}
 };

@@ -1,9 +1,11 @@
 #pragma once
 #include "PassarelaUsuari.h"
+#include "PassarelaVisualitzaPel.h"
 class Petitflix
 {
 	private:
 		PassarelaUsuari usuari;
+		PassarelaVisualitzaPel pel;
 		Petitflix(){
 		}
 	public:
@@ -21,6 +23,12 @@ class Petitflix
 		}
 		PassarelaUsuari* obteUsuari() {
 			return &usuari;
+		}
+		void visualitzacio() {
+			pel = PassarelaVisualitzaPel();
+		}
+		PassarelaVisualitzaPel* obtenNumVisualitzacions(){
+			return &pel;
 		}
 
 };

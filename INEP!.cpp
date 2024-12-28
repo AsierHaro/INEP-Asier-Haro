@@ -83,9 +83,9 @@ int main()
                             wcout << " Escriu opcio: ";
                             cin >> opcio;
                             system("cls");
-                            if (opcio == 4) {
-                                tornar = true;
-                            }
+                            if (opcio == 1) presentacio.ConsultaProperesEstrenes();
+                            else if (opcio == 4) tornar = true;
+                            
                         }
                     }
                     else if (opcio == 4) {
@@ -113,9 +113,8 @@ int main()
                 wcout << " Escriu opcio: ";
                 cin >> opcio;
                 system("cls");
-                if (opcio == 4) {
-                    tornar = true;
-                }
+                if (opcio == 1) presentacio.ConsultaProperesEstrenes();
+                else if (opcio == 4) tornar = true;
             }
         }
         else if(opcio == 4) {

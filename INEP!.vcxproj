@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.1.0-winx64\mysql-connector-c++-9.1.0-winx64\include\jdbc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.1.0-winx64</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,10 +138,12 @@
     <ClCompile Include="CtrlModificaUsuari.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP!.cpp" />
+    <ClCompile Include="CercadoraPropersEstrens.h" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
     <ClCompile Include="PassarelaVisualitzaSerie.cpp" />
     <ClCompile Include="Petitflix.cpp" />
+    <ClCompile Include="TxConsultarProperesEstrenes.cpp" />
     <ClCompile Include="TxConsultarUsuari.cpp" />
     <ClCompile Include="TxEsborraUsuari.cpp" />
     <ClCompile Include="TxInfoVisualitzacions.cpp" />
@@ -156,17 +158,21 @@
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="DTOPel.h" />
     <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="PassarelaEstrenes.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
     <ClInclude Include="Petitflix.h" />
+    <ClInclude Include="TxConsultaProperesEstrenes.h" />
     <ClInclude Include="TxConsultarUsuari.h" />
     <ClInclude Include="TxEsborraUsuari.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />
     <ClInclude Include="TxIniciSessio.h" />
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
+    <ClInclude Include="TxVisualitzarPel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
