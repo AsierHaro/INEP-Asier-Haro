@@ -12,8 +12,6 @@ class TxConsultarUsuari
 		TxConsultarUsuari() {
 		}
 
-
-
 		void executar(){
 			Petitflix& petitflix = Petitflix::getInstance();
 			usuari = petitflix.obteUsuari();
