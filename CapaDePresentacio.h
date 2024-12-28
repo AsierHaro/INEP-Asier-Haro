@@ -8,12 +8,14 @@
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
 #include "TxConsultaProperesEstrenes.h"
+#include "TxVisualitzarPel.h"
 
 using namespace std;
 
 class CapaDePresentacio
 {
 private:
+	TxVisualitzaPel tx;
 	CapaDePresentacio() {
 	}
 
@@ -186,5 +188,77 @@ public:
 		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
 		//TxConsultaProperesEstrenes tx;
 	}
+
+	void mostrarVisualitzacions(const std::string& sobrenom) {
+		std::vector<PassarelaVisualitzaPel> visualitzacions = tx.obteVisualitzacions(sobrenom);
+
+		std::cout << "Visualitzacions per a l'usuari amb sobrenom: " << sobrenom << std::endl;
+		for (auto& visualitzacio : visualitzacions) {
+			std::cout << "Títol: " << visualitzacio.obteTitolPel() << "\n"
+				<< "Data: " << visualitzacio.obteData() << "\n"
+				<< "Nombre de visualitzacions: " << visualitzacio.obtenNumVisualitzacions() << "\n"
+				<< "----------------------------------------" << std::endl;
+		}
+	}
+
+	void afegirVisualitzacio() {
+		std::string sobrenom, titolPel, data;
+		int numVisualitzacions;
+
+		std::cout << "Introdueix el sobrenom: ";
+		std::cin >> sobrenom;
+
+		std::cout << "Introdueix el títol de la pel·lícula: ";
+		std::cin >> titolPel;
+
+		std::cout << "Introdueix la data (dd/mm/yyyy): ";
+		std::cin >> data;
+
+		std::cout << "Introdueix el nombre de visualitzacions: ";
+		std::cin >> numVisualitzacions;
+
+		PassarelaVisualitzaPel visualitzacio(titolPel, sobrenom, data, numVisualitzacions);
+		tx.insereixVisualitzacio(visualitzacio);
+		std::cout << "Visualització afegida correctament!" << std::endl;
+	}
+
+	void esborrarVisualitzacio() {
+		std::string sobrenom;
+		std::cout << "Introdueix el sobrenom de la visualització a esborrar: ";
+		std::cin >> sobrenom;
+
+		tx.esborraVisualitzacio(sobrenom);
+		std::cout << "Visualització esborrada correctament!" << std::endl;
+	}
+
+	void modificarVisualitzacio() {
+		std::string sobrenom, nouTitol, novaData;
+		int novesVisualitzacions;
+
+		std::cout << "Introdueix el sobrenom de la visualització a modificar: ";
+		std::cin >> sobrenom;
+
+		std::cout << "Introdueix el nou títol: ";
+		std::cin >> nouTitol;
+
+		std::cout << "Introdueix la nova data (dd/mm/yyyy): ";
+		std::cin >> novaData;
+
+		std::cout << "Introdueix el nou nombre de visualitzacions: ";
+		std::cin >> novesVisualitzacions;
+
+		std::vector<PassarelaVisualitzaPel> visualitzacions = tx.obteVisualitzacions(sobrenom);
+		if (!visualitzacions.empty()) {
+			PassarelaVisualitzaPel& visualitzacio = visualitzacions[0];
+			tx.modificaVisualitzacio(visualitzacio, nouTitol, novaData, novesVisualitzacions);
+			std::cout << "Visualització modificada correctament!" << std::endl;
+		}
+		else {
+			std::cout << "No s'ha trobat cap visualització amb aquest sobrenom." << std::endl;
+		}
+	}
+
+
+
 
 };
