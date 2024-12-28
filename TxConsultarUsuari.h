@@ -9,8 +9,10 @@ class TxConsultarUsuari
 		PassarelaUsuari* usuari;
 	public:
 
-		TxConsultarUsuari(){
+		TxConsultarUsuari() {
 		}
+
+
 
 		void executar(){
 			Petitflix& petitflix = Petitflix::getInstance();

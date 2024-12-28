@@ -7,6 +7,7 @@ class CtrlModificaUsuari
 		PassarelaUsuari* usuari;
 	public:
 		CtrlModificaUsuari(){
+			usuari = nullptr;
 		}
 
 		DTOUsuari consultaUsuari() {
