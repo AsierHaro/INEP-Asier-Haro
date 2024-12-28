@@ -5,6 +5,7 @@ class PassarelaVisualitzaPel
 	private:
 		string sobrenom;
 		string titolPel;
+		string descripcio;
 		string data;
 		int numVisualitzacions;
 
@@ -13,14 +14,16 @@ class PassarelaVisualitzaPel
 		PassarelaVisualitzaPel() {
 			sobrenom = "";
 			titolPel= "";
+			descripcio = "";
 			data = "";
 			numVisualitzacions = 0;
 		}
 
 
-		PassarelaVisualitzaPel(string NomP, string sobrenomP,string DataP, int VisualitzacioP) {
+		PassarelaVisualitzaPel(string NomP, string sobrenomP,string DataP,string descripcioP ,int VisualitzacioP) {
 			titolPel = NomP;
 			sobrenom = sobrenomP;
+			descripcio = descripcioP;
 			data = DataP;
 			numVisualitzacions = VisualitzacioP;
 		}
@@ -30,6 +33,7 @@ class PassarelaVisualitzaPel
 			std::string query = "INSERT INTO Pel (sobrenom, titolPel, data,numVisualitzacions) VALUES ('" +
 				titolPel + "', '" +
 				sobrenom + "', '" +
+				descripcio +"', '" +
 				data + "', '%d/%m/%Y'), " +
 				std::to_string(numVisualitzacions) + ")";
 			bd.exec(query);
@@ -45,6 +49,7 @@ class PassarelaVisualitzaPel
 			ConnexioBD bd;
 			string sql = "UPDATE Pel SET "
 				"titolPel = '" + titolPel + "', "
+				"descripcio = '" + descripcio + " ', "
 				"data = STR_TO_DATE('" + data + "', '%d/%m/%Y'), "
 				"numVisualitzacions = " + std::to_string(numVisualitzacions) + ", "
 				"WHERE sobrenom = '" + sobrenom + "';";
@@ -53,6 +58,10 @@ class PassarelaVisualitzaPel
 
 		string obteSobrenom() {
 			return sobrenom;
+		}
+
+		string obteDescripcio() {
+			return descripcio;
 		}
 
 		string obteTitolPel() {
