@@ -9,13 +9,14 @@
 #include "TxEsborraUsuari.h"
 #include "TxConsultaProperesEstrenes.h"
 #include "TxVisualitzarPel.h"
+#include "DTOPel.h"
 
 using namespace std;
 
 class CapaDePresentacio
 {
 private:
-	TxVisualitzaPel tx;
+	//TxVisualitzaPel tx;
 	CapaDePresentacio() {
 	}
 
@@ -60,8 +61,8 @@ public:
 			}
 			else if (e.getErrorCode() == 1062) {
 				string errorMessage = e.what();
-				if(errorMessage.find("sobrenom") != string::npos) cout << "Ja existeix un usuari amb aquest sobrenom" << endl;
-				else if(errorMessage.find("correu_electronic") != string::npos) cout << "Ja existeix un usuari amb aquest correu electronic" << endl;
+				if (errorMessage.find("sobrenom") != string::npos) cout << "Ja existeix un usuari amb aquest sobrenom" << endl;
+				else if (errorMessage.find("correu_electronic") != string::npos) cout << "Ja existeix un usuari amb aquest correu electronic" << endl;
 			}
 		}
 		cin.ignore();
@@ -162,7 +163,7 @@ public:
 		catch (const std::runtime_error& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
-	
+
 		if (sessioIniciada) {
 			system("cls");
 			cout << "Sessio iniciada correctament." << endl;
@@ -189,76 +190,32 @@ public:
 		//TxConsultaProperesEstrenes tx;
 	}
 
-	void mostrarVisualitzacions(const std::string& sobrenom) {
-		std::vector<PassarelaVisualitzaPel> visualitzacions = tx.obteVisualitzacions(sobrenom);
-
-		std::cout << "Visualitzacions per a l'usuari amb sobrenom: " << sobrenom << std::endl;
-		for (auto& visualitzacio : visualitzacions) {
-			std::cout << "Títol: " << visualitzacio.obteTitolPel() << "\n"
-				<< "Data: " << visualitzacio.obteData() << "\n"
-				<< "Nombre de visualitzacions: " << visualitzacio.obtenNumVisualitzacions() << "\n"
-				<< "----------------------------------------" << std::endl;
-		}
-	}
-
-	void afegirVisualitzacio() {
-		std::string sobrenom, titolPel, data;
-		int numVisualitzacions;
-
-		std::cout << "Introdueix el sobrenom: ";
-		std::cin >> sobrenom;
-
-		std::cout << "Introdueix el títol de la pel·lícula: ";
+	void VisualitzaPel() {
+		string titolPel,continuar;
+		std::cout << "** Visualitza Pel.lícula **" << std::endl;
+		std::cout << "Nom pel.lícula: ";
 		std::cin >> titolPel;
+		system("cls");
+		try {
+			TxVisualitzaPel tx(titolPel);
+			tx.executar();
+			std::cout << "Informacio pel.lícula ..." << std::endl;
+			DTOPel pel;
+			std::cout << pel << endl;
+			std::cout << "vols continuar amb la visulització (S/N): " << std::endl;
+			std::cin >> continuar;
+			if (continuar == "S") {
 
-		std::cout << "Introdueix la data (dd/mm/yyyy): ";
-		std::cin >> data;
+			}
+		
 
-		std::cout << "Introdueix el nombre de visualitzacions: ";
-		std::cin >> numVisualitzacions;
 
-		PassarelaVisualitzaPel visualitzacio(titolPel, sobrenom, data, numVisualitzacions);
-		tx.insereixVisualitzacio(visualitzacio);
-		std::cout << "Visualització afegida correctament!" << std::endl;
-	}
-
-	void esborrarVisualitzacio() {
-		std::string sobrenom;
-		std::cout << "Introdueix el sobrenom de la visualització a esborrar: ";
-		std::cin >> sobrenom;
-
-		tx.esborraVisualitzacio(sobrenom);
-		std::cout << "Visualització esborrada correctament!" << std::endl;
-	}
-
-	void modificarVisualitzacio() {
-		std::string sobrenom, nouTitol, novaData;
-		int novesVisualitzacions;
-
-		std::cout << "Introdueix el sobrenom de la visualització a modificar: ";
-		std::cin >> sobrenom;
-
-		std::cout << "Introdueix el nou títol: ";
-		std::cin >> nouTitol;
-
-		std::cout << "Introdueix la nova data (dd/mm/yyyy): ";
-		std::cin >> novaData;
-
-		std::cout << "Introdueix el nou nombre de visualitzacions: ";
-		std::cin >> novesVisualitzacions;
-
-		std::vector<PassarelaVisualitzaPel> visualitzacions = tx.obteVisualitzacions(sobrenom);
-		if (!visualitzacions.empty()) {
-			PassarelaVisualitzaPel& visualitzacio = visualitzacions[0];
-			tx.modificaVisualitzacio(visualitzacio, nouTitol, novaData, novesVisualitzacions);
-			std::cout << "Visualització modificada correctament!" << std::endl;
 		}
-		else {
-			std::cout << "No s'ha trobat cap visualització amb aquest sobrenom." << std::endl;
+		catch (const std::runtime_error& e) {
+			std::cout << "Error: " << e.what() << endl;
 		}
+		cin.ignore();
+		cin.get();
+		system("cls");
 	}
-
-
-
-
 };
