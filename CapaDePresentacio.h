@@ -237,7 +237,8 @@ public:
 			cout << usu.obteSubscripcio();
 		}
 		std::cout << std::endl << std::endl << std::endl;
-		std::cout << "**  Novetats pel·lícules **" << endl << "*************************************" << endl;
+		std::cout << "**  Novetats pel·lícules **" << endl 
+				  << "***************************" << endl;
 		try {
 			TxNovetatspelicules tx;
 			tx.executar();
@@ -245,7 +246,8 @@ public:
 			for (unsigned int i = 0; i < vp.size(); i++) {
 				cout << i + 1 << ".- " << vp[i];
 			}
-			std::cout << "**  Novetats Series **" << endl << "*************************************" << endl;
+			std::cout << "**  Novetats Series **" << endl 
+					  << "**********************" << endl;
 			TxNovetatsseries ty;
 			ty.executar();
 			vector<DTONserie> vs = ty.obteresultat();
