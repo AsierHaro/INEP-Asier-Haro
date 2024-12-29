@@ -189,6 +189,9 @@
     <ClInclude Include="TxVisualitzarPel.h" />
     <ClInclude Include="TxVisualitzaSerie.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="configuracio.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
