@@ -1,4 +1,0 @@
-host=tcp://ubiwan.epsevg.upc.edu:3306
-user=inep17
-password=cooKa9gahd9aak
-database=inep17
