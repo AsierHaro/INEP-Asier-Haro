@@ -20,14 +20,14 @@ class PassarelaVisualitzaPel
 		}
 
 
-		/*PassarelaVisualitzaPel(string NomP, string sobrenomP, string DataP, string descripcioP, int VisualitzacioP) {
+		PassarelaVisualitzaPel(string NomP, string sobrenomP, string DataP, string descripcioP, int VisualitzacioP) {
 			titolPel = NomP;
 			sobrenom = sobrenomP;
 			descripcio = descripcioP;
 			data = DataP;
 			numVisualitzacions = VisualitzacioP;
 		}
-
+		/*
 		void insereix() const {
 			ConnexioBD bd;
 			std::string query = "INSERT INTO Pel (sobrenom, titolPel, data,numVisualitzacions) VALUES ('" +

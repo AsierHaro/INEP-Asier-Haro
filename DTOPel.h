@@ -7,13 +7,13 @@ public:
    
     DTOPel() {}
 
-    /*DTOPel(PassarelaVisualitzaPel pel) {
+   /* DTOPel(PassarelaVisualitzaPel pel) {
         sobrenom = pel.obteSobrenom();
         titolPel = pel.obteTitolPel();
         descripcio = pel.obteDescripcio();
         data = pel.obteData();
         numVisualitzacions = pel.obtenNumVisualitzacions();
-    }*/
+    }
 
     friend std::ostream& operator<<(ostream& os, const DTOPel& dto) {
         //os << "Sobrenom: " << dto.sobrenom << endl;
@@ -31,7 +31,7 @@ public:
         return descripcio;
     }
     int obteNumVisualitzacions() const { return numVisualitzacions; }
-
+    */
 private:
  
     string sobrenom = "";

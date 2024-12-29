@@ -139,6 +139,7 @@
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP!.cpp" />
     <ClCompile Include="CercadoraPropersEstrens.h" />
+    <ClCompile Include="PassarelaPeliculaVisualitzada.h" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
     <ClCompile Include="PassarelaVisualitzaSerie.cpp" />
@@ -153,7 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraPeliculesVisualitzades.h" />
     <ClInclude Include="CercadoraPelMesV.h" />
+    <ClInclude Include="CercadoraSeriesVisualitzades.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
@@ -165,13 +168,16 @@
     <ClInclude Include="DTONpel.h" />
     <ClInclude Include="DTONserie.h" />
     <ClInclude Include="DTOPel.h" />
+    <ClInclude Include="DTOPeliV.h" />
     <ClInclude Include="DTOPelMesV.h" />
     <ClInclude Include="DTOSerie.h" />
+    <ClInclude Include="DTOSerieV.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaEstrenes.h" />
     <ClInclude Include="PassarelaNPelicula.h" />
     <ClInclude Include="PassarelaNserie.h" />
     <ClInclude Include="PassarelaPelMesV.h" />
+    <ClInclude Include="PassarelaSerieVisualitzada.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
@@ -184,10 +190,14 @@
     <ClInclude Include="TxIniciSessio.h" />
     <ClInclude Include="TxNovetatspelicules.h" />
     <ClInclude Include="TxNovetatsseries.h" />
+    <ClInclude Include="TxPeliculasVisualitzades.h" />
     <ClInclude Include="TxRegistraUsuari.h" />
+    <ClInclude Include="TxSeriesVisualitzades.h" />
     <ClInclude Include="TxTancaSessio.h" />
     <ClInclude Include="TxVisualitzarPel.h" />
     <ClInclude Include="TxVisualitzaSerie.h" />
+    <ClInclude Include="VisualitzaPelicula.h" />
+    <ClInclude Include="VisualitzaSerie.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="configuracio.txt" />

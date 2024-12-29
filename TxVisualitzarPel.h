@@ -12,13 +12,14 @@ private:
 public:
     TxVisualitzaPel() {}
 	
-	/*TxVisualitzaPel(string titolPelicula) {
+	TxVisualitzaPel(string titolPelicula) {
 		titolPel = titolPelicula;
 	}
-	void executar() {
+	/*void executar() {
 		Petitflix& petitflix = Petitflix::getInstance();
 		petitflix.visualitzacio();
-	}*/
+	}
+	*/
  
 };
 

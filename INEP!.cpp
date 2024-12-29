@@ -65,9 +65,9 @@ int main()
                             wcout << " Escriu opcio: ";
                             cin >> opcio;
                             system("cls");
-                            if (opcio == 4) {
-                                tornar = true;
-                            }
+                            if (opcio == 3) presentacio.ConsultaVisualitzacions();
+                            else if (opcio == 4) tornar = true;
+                       
                         }
                     }
                     else if (opcio == 3) {

@@ -12,6 +12,9 @@
 #include "TxNovetatsseries.h"
 #include "TxConsultaPeliculesMesVistes.h"
 #include "TxVisualitzarPel.h"
+#include "TxPeliculasVisualitzades.h"
+#include "TxSeriesVisualitzades.h"
+#include "TxInfoVisualitzacions.h"
 #include "DTOPel.h"
 
 using namespace std;
@@ -79,13 +82,17 @@ public:
 			tx.executar();
 			DTOUsuari usu = tx.obteResultat();
 			cout << usu << endl;
-			cin.ignore();
-			cin.get();
-			system("cls");
+			TxInfoVisualitzacions txv;
+			txv.executar();
+			cout << txv.obtePel() << " pel·licules visualitzades" << endl;
+			cout << txv.obteSerie() << " capítols visualitzat;" << endl;
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
 		}
+		cin.ignore();
+		cin.get();
+		system("cls");
 	}
 
 	void modificaUsuari() {
@@ -299,5 +306,37 @@ public:
 		cin.ignore();
 		cin.get();
 		system("cls");
-	}*/
+	}
+	*/
+	void ConsultaVisualitzacions() {
+		std::cout << "** Consulta visualitzacions **" << std::endl << std::endl;
+		std::cout << "** Visualitzacions pel·lícules **" 
+		<< endl   << "*********************************" << endl;
+		try {
+			TxConsultarUsuari tx;
+			tx.executar();
+			DTOUsuari usu = tx.obteResultat();
+			string sobrenom = usu.obteSobrenom();
+			TxPeliculasVisualitzades txp;
+			txp.executar(sobrenom);
+			vector<DTOPeliV> vp = txp.obteresultat();
+			for (unsigned int i = 0; i < vp.size(); i++) {
+				cout << vp[i];
+			}
+			std::cout << "** Visualitzacions pel·lícules **" 
+			<< endl	  << "*********************************" << endl;
+			TxSeriesVisualitzades txs;
+			txs.executar(sobrenom);
+			vector<DTOSerieV> vs = txs.obteresultat();
+			for (unsigned int i = 0; i < vs.size(); i++) {
+				cout << vs[i];
+			}
+		}
+		catch (const std::runtime_error& e) {
+			std::cout << "Error: " << e.what() << endl;
+		}
+		cin.ignore();
+		cin.get();
+		system("cls");
+	}
 };
