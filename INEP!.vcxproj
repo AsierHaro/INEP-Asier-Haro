@@ -159,6 +159,7 @@
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="DTOPel.h" />
+    <ClInclude Include="DTOSerie.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaEstrenes.h" />
     <ClInclude Include="PassarelaUsuari.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
     <ClInclude Include="TxVisualitzarPel.h" />
+    <ClInclude Include="TxVisualitzaSerie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
