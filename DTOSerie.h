@@ -60,7 +60,7 @@ class DTOSerie {
 public:
     DTOSerie() {}
 
-    DTOSerie(PassarelaVisualitzaSerie serie) {
+    /*DTOSerie(PassarelaVisualitzaSerie serie) {
         sobrenom = serie.obteSobrenom();
         titolSerie = serie.obteTitolSerie();
         numTemporada = serie.obteTemporada();
@@ -70,7 +70,7 @@ public:
     string obteTitolSerie() const { return titolSerie; }
     int obteTemporada() const { return numTemporada; }
     const std::vector<DTOTemporada>& obteTemporades() const { return temporades; }
-
+    */
 private:
 
     string sobrenom = "";

@@ -20,7 +20,7 @@ class PassarelaVisualitzaPel
 		}
 
 
-		PassarelaVisualitzaPel(string NomP, string sobrenomP,string DataP,string descripcioP ,int VisualitzacioP) {
+		/*PassarelaVisualitzaPel(string NomP, string sobrenomP, string DataP, string descripcioP, int VisualitzacioP) {
 			titolPel = NomP;
 			sobrenom = sobrenomP;
 			descripcio = descripcioP;
@@ -75,5 +75,6 @@ class PassarelaVisualitzaPel
 		int obtenNumVisualitzacions() {
 			return numVisualitzacions;
 		}
+		*/
 };
 

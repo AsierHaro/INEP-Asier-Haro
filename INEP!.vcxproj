@@ -153,24 +153,37 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraPelMesV.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
+    <ClInclude Include="CercadorNPelicules.h" />
+    <ClInclude Include="CercadorNSeries.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="DTOEstrenes.h" />
+    <ClInclude Include="DTONpel.h" />
+    <ClInclude Include="DTONserie.h" />
     <ClInclude Include="DTOPel.h" />
+    <ClInclude Include="DTOPelMesV.h" />
     <ClInclude Include="DTOSerie.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaEstrenes.h" />
+    <ClInclude Include="PassarelaNPelicula.h" />
+    <ClInclude Include="PassarelaNserie.h" />
+    <ClInclude Include="PassarelaPelMesV.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
     <ClInclude Include="Petitflix.h" />
+    <ClInclude Include="TxConsultaPeliculesMesVistes.h" />
     <ClInclude Include="TxConsultaProperesEstrenes.h" />
     <ClInclude Include="TxConsultarUsuari.h" />
     <ClInclude Include="TxEsborraUsuari.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />
     <ClInclude Include="TxIniciSessio.h" />
+    <ClInclude Include="TxNovetatspelicules.h" />
+    <ClInclude Include="TxNovetatsseries.h" />
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
     <ClInclude Include="TxVisualitzarPel.h" />

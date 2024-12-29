@@ -1,38 +1,35 @@
 #pragma once
 #include "ConnexioBD.h"
-class PassarelaEstrenes
+class PassarelaNSerie
 {
 private:
 	string data;
-	string tipus;
 	string titol;
 	string edat;
-	int duracio;
 	int temporada;
+	int cap;
+	int duracio;
 public:
-	PassarelaEstrenes() {
+	PassarelaNSerie() {
 		data = " ";
-		tipus = " ";
 		titol = " ";
 		edat = " ";
-		duracio = 0;
 		temporada = 0;
+		cap = 0;
+		duracio = 0;
 
 	}
 
-	PassarelaEstrenes(string dataE, string tipusE, string titolE, string edatE, int duracioE, int temporadaE) {
-		data = dataE;
-		tipus = tipusE;
-		titol = titolE;
-		edat = edatE;
-		duracio = duracioE;
-		temporada = temporadaE;
+	PassarelaNSerie(string dataN, string titolN, string edatN, int duracioN, int capN, int temporadaN) {
+		data = dataN;
+		titol = titolN;
+		edat = edatN;
+		duracio = duracioN;
+		cap = capN;
+		temporada = temporadaN;
 	}
 	string obtedata() {
 		return data;
-	}
-	string obtetipus() {
-		return tipus;
 	}
 	string obtetitol() {
 		return titol;
@@ -45,5 +42,8 @@ public:
 	}
 	int obtetemporada() {
 		return temporada;
+	}
+	int obtecap() {
+		return cap;
 	}
 };

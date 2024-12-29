@@ -8,6 +8,9 @@
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
 #include "TxConsultaProperesEstrenes.h"
+#include "TxNovetatspelicules.h"
+#include "TxNovetatsseries.h"
+#include "TxConsultaPeliculesMesVistes.h"
 #include "TxVisualitzarPel.h"
 #include "DTOPel.h"
 
@@ -16,7 +19,6 @@ using namespace std;
 class CapaDePresentacio
 {
 private:
-	//TxVisualitzaPel tx;
 	CapaDePresentacio() {
 	}
 
@@ -184,13 +186,93 @@ public:
 		system("cls");
 	}
 
-	void ConsultaProperesEstrenes() {
+	void ConsultaProperesEstrenes(bool x) {
 		std::cout << "** Properes estrenes **" << std::endl;
-		std::cout << "Modalitat: " << std::endl << std::endl << std::endl;
-		//TxConsultaProperesEstrenes tx;
+		std::cout << "Modalitat: ";
+		if (!x) {
+			string modalitat;
+			cin >> modalitat;
+		}
+		else {
+			TxConsultarUsuari tx;
+			tx.executar();
+			DTOUsuari usu = tx.obteResultat();
+			cout << usu.obteSubscripcio();
+		}
+		std::cout << std::endl << std::endl << std::endl;
+		try {
+			TxConsultarProperesEstrenes tx;
+			tx.executar();
+			vector<DTOEstrenes> v = tx.obteresultat();
+			for (unsigned int i = 0; i < v.size(); i++) {
+				cout << i + 1 << ".- " << v[i];
+			}
+		}
+		catch (const std::runtime_error& e) {
+			cerr << "Error:" << e.what() << endl;
+		}
+		cin.ignore();
+		cin.get();
+		system("cls");
 	}
 
-	void VisualitzaPel() {
+	void ConsultaUltimesNovetats(bool x) {
+		std::cout << "** Novetats **" << std::endl;
+		std::cout << "Modalitat: ";
+		if (!x) {
+			string modalitat;
+			cin >> modalitat;
+		}
+		else {
+			TxConsultarUsuari tx;
+			tx.executar();
+			DTOUsuari usu = tx.obteResultat();
+			cout << usu.obteSubscripcio();
+		}
+		std::cout << std::endl << std::endl << std::endl;
+		std::cout << "**  Novetats pel·lícules **" << endl << "*************************************" << endl;
+		try {
+			TxNovetatspelicules tx;
+			tx.executar();
+			vector<DTONpel> vp = tx.obteresultat();
+			for (unsigned int i = 0; i < vp.size(); i++) {
+				cout << i + 1 << ".- " << vp[i];
+			}
+			std::cout << "**  Novetats Series **" << endl << "*************************************" << endl;
+			TxNovetatsseries ty;
+			ty.executar();
+			vector<DTONserie> vs = ty.obteresultat();
+			for (unsigned int i = 0; i < vs.size(); i++) {
+				cout << i + 1 << ".- " << vs[i];
+			}
+		}
+		catch (const std::runtime_error& e) {
+			cerr << "Error:" << e.what() << endl;
+		}
+		cin.ignore();
+		cin.get();
+		system("cls");
+	}
+
+	void ConsultaPeliculesMesVistes(bool x) {
+		std::cout << "** Pel·lícules més visualitzades **" << std::endl << std::endl;
+		try {
+			TxConsultaPeliculesMesVistes tx;
+			tx.executar(x);
+			vector<DTOPelMesV> v = tx.obteresultat();
+			for (unsigned int i = 0; i < v.size(); i++) {
+				cout << i + 1 << ".- " << v[i];
+			}
+		}
+		catch (const std::runtime_error& e) {
+			cerr << "Error:" << e.what() << endl;
+		}
+		cin.ignore();
+		cin.get();
+		system("cls");
+	}
+
+	/*void VisualitzaPel() {
 		string titolPel,continuar;
 		std::cout << "** Visualitza Pel.lícula **" << std::endl;
 		std::cout << "Nom pel.lícula: ";
@@ -217,5 +299,5 @@ public:
 		cin.ignore();
 		cin.get();
 		system("cls");
-	}
+	}*/
 };

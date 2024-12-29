@@ -5,7 +5,7 @@
 class CercadoraVisualitzaPel
 {
 public:
-    vector<PassarelaVisualitzaPel> cercaVisualitzacions(string sobrenom) {
+    /*vector<PassarelaVisualitzaPel> cercaVisualitzacions(string sobrenom) {
         ConnexioBD bd;
         std::string sql =
             "SELECT p.titolPel, DATE_FORMAT(v.data, '%d/%m/%Y') AS data_formateada, "
@@ -30,7 +30,7 @@ public:
         }
 
         return resultats;
-    }
+    }*/
 };
 
 

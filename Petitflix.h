@@ -24,12 +24,12 @@ class Petitflix
 		PassarelaUsuari* obteUsuari() {
 			return &usuari;
 		}
-		void visualitzacio() {
+		/*void visualitzacio() {
 			pel = PassarelaVisualitzaPel();
 		}
 		PassarelaVisualitzaPel* obtenNumVisualitzacions(){
 			return &pel;
-		}
+		}*/
 
 };
 

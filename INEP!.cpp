@@ -83,7 +83,9 @@ int main()
                             wcout << " Escriu opcio: ";
                             cin >> opcio;
                             system("cls");
-                            if (opcio == 1) presentacio.ConsultaProperesEstrenes();
+                            if (opcio == 1) presentacio.ConsultaProperesEstrenes(true);
+                            else if (opcio == 2) presentacio.ConsultaUltimesNovetats(true);
+                            else if (opcio == 3) presentacio.ConsultaPeliculesMesVistes(true);
                             else if (opcio == 4) tornar = true;
                             
                         }
@@ -113,7 +115,9 @@ int main()
                 wcout << " Escriu opcio: ";
                 cin >> opcio;
                 system("cls");
-                if (opcio == 1) presentacio.ConsultaProperesEstrenes();
+                if (opcio == 1) presentacio.ConsultaProperesEstrenes(false);
+                else if (opcio == 2) presentacio.ConsultaUltimesNovetats(false);
+                else if (opcio == 3) presentacio.ConsultaPeliculesMesVistes(false);
                 else if (opcio == 4) tornar = true;
             }
         }
