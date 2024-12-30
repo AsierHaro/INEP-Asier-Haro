@@ -201,6 +201,7 @@
     <ClInclude Include="TxNovetatspelicules.h" />
     <ClInclude Include="TxNovetatsseries.h" />
     <ClInclude Include="TxPeliculasVisualitzades.h" />
+    <ClInclude Include="TxPeliculesRelacionades.h" />
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxSeriesVisualitzades.h" />
     <ClInclude Include="TxTancaSessio.h" />
