@@ -175,7 +175,6 @@
     <ClInclude Include="DTOPeliR.h" />
     <ClInclude Include="DTOPeliV.h" />
     <ClInclude Include="DTOPelMesV.h" />
-    <ClInclude Include="DTOSerie.h" />
     <ClInclude Include="DTOSerieV.h" />
     <ClInclude Include="DTOTemporada.h" />
     <ClInclude Include="DTOUsuari.h" />

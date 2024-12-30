@@ -1,6 +1,5 @@
 #pragma once
 #include "ConnexioBD.h"
-#include "DTOSerie.h"
 
 class PassarelaVisualitzaSerie {
 private:

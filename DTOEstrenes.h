@@ -1,5 +1,6 @@
 #pragma once
-#include "ConnexioBD.h"
+#include <iostream>
+#include <string>
 
 class DTOEstrenes
 {
@@ -17,10 +18,10 @@ public:
 	friend ostream& operator<<(ostream& os, const DTOEstrenes& est) {
 		os << est.data ;
 		if (est.tipus == "pelicula") {
-			os << " [Pel·lícula]: " << est.titol << "; " << est.edat << "; " << est.duracio << " min.";
+			os << " [Pelicula]: " << est.titol << "; " << est.edat << "; " << est.duracio << " min.";
 		}
 		else {
-			os << " [Sèrie]: " << est.titol << "; " << est.edat << "; " << "Temporada " << est.temporada << ".";
+			os << " [Serie]: " << est.titol << "; " << est.edat << "; " << "Temporada " << est.temporada << ".";
 		}
 		os << endl;
 		return os;

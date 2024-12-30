@@ -87,8 +87,8 @@ public:
 			cout << usu << endl;
 			TxInfoVisualitzacions txv;
 			txv.executar();
-			cout << txv.obtePel() << " pel·licules visualitzades" << endl;
-			cout << txv.obteSerie() << " capítols visualitzat;" << endl;
+			cout << txv.obtePel() << " pelicules visualitzades" << endl;
+			cout << txv.obteSerie() << " capitols visualitzats" << endl;
 		}
 		catch (const exception& e) {
 			std::cout << "Error: " << e.what() << endl;
@@ -247,8 +247,8 @@ public:
 				cout << usu.obteSubscripcio();
 			}
 			cout << endl << endl << endl;
-			cout << "**  Novetats pel·lícules **" << endl
-				<< "***************************" << endl;
+			cout << "**  Novetats pelicules **" << endl
+				<<  "*************************" << endl;
 		
 			TxNovetatspelicules tx;
 			tx.executar();
@@ -257,7 +257,7 @@ public:
 				cout << i + 1 << ".- " << vp[i];
 			}
 			cout << "**  Novetats Series **" << endl
-				<< "**********************" << endl;
+				<<	"**********************" << endl;
 			TxNovetatsseries ty;
 			ty.executar();
 			vector<DTONserie> vs = ty.obteresultat();
@@ -274,7 +274,7 @@ public:
 	}
 
 	void ConsultaPeliculesMesVistes(bool x) {
-		cout << "** Pel·lícules més visualitzades **" << endl << endl;
+		cout << "** Pelicules mes visualitzades **" << endl << endl;
 		try {
 			TxConsultaPeliculesMesVistes tx;
 			tx.executar(x);
@@ -293,9 +293,9 @@ public:
 
 	void VisualitzaPel() {
 		string titolPel, continuar;
-		cout << "** Visualitza Pel.lícula **" << endl;
+		cout << "** Visualitza Pelicula **" << endl;
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Nom pel.lícula: ";
+		cout << "Nom pelicula: ";
 		getline(std::cin, titolPel);
 		try {
 			TxInformacioPel txi;
@@ -307,9 +307,9 @@ public:
 			DTOUsuari usu = tx.obteResultat();
 			TxComprobarEdat txed;
 			txed.comp(usu.obteEdat(), pel.obteQualificacio());
-			cout << "Informacio pel.lícula ..." << endl;
+			cout << "Informacio pelicula ..." << endl;
 			cout << pel << endl;
-			cout << "vols continuar amb la visulització (S/N):";
+			cout << "vols continuar amb la visulitzacio (S/N):";
 			cin >> continuar;
 			system("cls");
 			if (continuar == "S") {
@@ -341,7 +341,7 @@ public:
 		string titolSerie, continuar;
 		cout << "** Visualitza Capitol **" << endl;
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Nom de la sèrie: ";
+		cout << "Nom de la serie: ";
 		getline(cin, titolSerie);
 		try {
 			TxInfoTemporades txt;
@@ -354,7 +354,7 @@ public:
 			TxComprobarEdat txed;
 			txed.comp(usu.obteEdat(), t.obtequalificacio());
 			system("cls");
-			cout << "La sèrie té " << numt << " temporades." << endl << " Escull temporada: ";
+			cout << "La serie te " << numt << " temporades." << endl << " Escull temporada: ";
 			int temp;
 			cin >> temp;
 			if (temp > numt or temp < 0) throw std::runtime_error("No existeis la temporada");
@@ -367,16 +367,16 @@ public:
 				cout << v[i];
 			}
 			int cap;
-			cout << "Número de capítol a visualitzar: ";
+			cout << "Numero de capitol a visualitzar: ";
 			cin >> cap;
 			if (cap > v.size() or 0 > cap)  throw std::runtime_error("No existeis el capitol");
 			system("cls");
-			cout << "Vols continuar amb la visualització (S/N):";
+			cout << "Vols continuar amb la visualitzacio (S/N):";
 			string sn;
 			cin >> sn;
 			if (sn == "S") {
 				string data = tv.visualitzar(cap);
-				cout << "Visualització registrada: " << data << endl;
+				cout << "Visualitzacio registrada: " << data << endl;
 			}
 		}
 		catch (const runtime_error& e) {
@@ -389,8 +389,8 @@ public:
 	}
 	void ConsultaVisualitzacions() {
 		cout << "** Consulta visualitzacions **" << endl << endl;
-		cout << "** Visualitzacions pel·lícules **" << endl
-			<<	"*********************************" << endl;
+		cout << "** Visualitzacions pelicules **" << endl
+			<<	"*******************************" << endl;
 		try {
 			TxConsultarUsuari tx;
 			tx.executar();
@@ -402,7 +402,7 @@ public:
 			for (unsigned int i = 0; i < vp.size(); i++) {
 				cout << vp[i];
 			}
-			cout << "** Visualitzacions sèries **" << endl
+			cout << "** Visualitzacions series **" << endl
 				 << "****************************" << endl;
 			TxSeriesVisualitzades txs;
 			txs.executar(sobrenom);

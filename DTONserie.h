@@ -1,5 +1,6 @@
 #pragma once
-#include "ConnexioBD.h"
+#include <iostream>
+#include <string>
 class DTONserie
 {
 public:

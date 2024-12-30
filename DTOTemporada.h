@@ -1,5 +1,6 @@
 #pragma once
-#include "PassarelaVisualitzaSerie.h"
+#include <iostream>
+#include <string>
 class DTOTemporada {
 public:
 	DTOTemporada() {
