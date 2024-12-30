@@ -317,7 +317,7 @@ public:
 				string sobrenom = usu.obteSobrenom();
 				TxVisualitzarPelicula txv;
 				string data = txv.executar(sobrenom, titol);
-				cout << "Visualitzaci0 registrada: " << data << endl;
+				cout << "Visualitzacio registrada: " << data << endl;
 				cout << "Pelicules relacionades:" << endl;
 				TxPeliculesRelacionades txr;
 				txr.executar(titol);
