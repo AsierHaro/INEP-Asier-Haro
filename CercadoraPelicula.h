@@ -19,12 +19,12 @@ public:
         PassarelaVisualitzaPel resultat;
         if (!res->next()) {
             delete res;
-            throw std::runtime_error("La película '" + titol + "' no existe en la base de datos.");
+            throw std::runtime_error("La pelicula '" + titol + "' no existeix en la base de dades.");
         }
         else {
             if (!res->getBoolean("estrenada")) {
                 delete res;
-                throw std::runtime_error("La película '" + titol + "' aún no se ha estrenado.");
+                throw std::runtime_error("La pelicula '" + titol + "' no s'ha estrenad.");
             }
             resultat = PassarelaVisualitzaPel(res->getString("titol"), res->getInt("duracio"), " ", res->getString("data_formateada"), res->getString("descripcio"), 0, res->getString("qualificacio"));
         }

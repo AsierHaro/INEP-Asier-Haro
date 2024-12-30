@@ -17,7 +17,7 @@ public:
         DTOTemporada resultat;
         if (!res->next()) {
             delete res;
-            throw std::runtime_error("La sèrie " + nom + " no existe en la base de datos.");
+            throw std::runtime_error("La serie " + nom + " no existeix en la base de dades.");
         }
         else {
             resultat = DTOTemporada(res->getInt("numero"), res->getString("qualificacio"));

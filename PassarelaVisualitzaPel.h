@@ -35,7 +35,6 @@ public:
 	}
 
 	string visualitza(string sobrenom, string titol) {
-		cout << sobrenom << " " << titol << endl;
 		ConnexioBD bd;
 		std::string sql =
 			"INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) "
