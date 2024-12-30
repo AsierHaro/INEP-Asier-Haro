@@ -317,8 +317,8 @@ public:
 				string sobrenom = usu.obteSobrenom();
 				TxVisualitzarPelicula txv;
 				string data = txv.executar(sobrenom, titol);
-				cout << "Visualització registrada: " << data << endl;
-				cout << "Pel·lícules relacionades:" << endl;
+				cout << "Visualitzaci0 registrada: " << data << endl;
+				cout << "Pelicules relacionades:" << endl;
 				TxPeliculesRelacionades txr;
 				txr.executar(titol);
 				vector<DTOPeliR> v = txr.obteresultat();
@@ -375,6 +375,7 @@ public:
 			string sn;
 			cin >> sn;
 			if (sn == "S") {
+				system("cls");
 				string data = tv.visualitzar(cap);
 				cout << "Visualitzacio registrada: " << data << endl;
 			}

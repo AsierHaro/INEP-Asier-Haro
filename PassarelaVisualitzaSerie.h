@@ -32,7 +32,7 @@ public:
         sql::ResultSet* p = bd.execQuery(sqlp);
         if (p->next() and !p->getBoolean("estrenada")) {
             delete p;
-            throw std::runtime_error("El capitol " + to_string(num) + " de la sèrie  " + titolSerie + " aún no se ha estrenado.");
+            throw std::runtime_error("El capitol " + to_string(num) + " de la temporada  " + to_string(numTemporada) + " de la serie " + titolSerie + " aun no s'ha estrenat.");
         }
         std::string sql =
             "INSERT INTO visualitzacio_capitol (sobrenom_usuari, titol_serie, num_temporada, num_capitol, data, num_visualitzacions) "
