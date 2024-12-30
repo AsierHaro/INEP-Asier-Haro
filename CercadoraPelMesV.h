@@ -1,5 +1,5 @@
 #pragma once
-#include "PassarelaPelMesV.h"
+#include "DTOPelMesV.h"
 #include "ConnexioBD.h"
 
 class CercadoraPelMesV
@@ -8,8 +8,8 @@ public:
 	CercadoraPelMesV() {
 
 	}
-	vector<PassarelaPelMesV> cercaMesVistes(bool x) {
-		vector<PassarelaPelMesV> continguts;
+	vector<DTOPelMesV> cercaMesVistes(bool x) {
+		vector<DTOPelMesV> continguts;
 		ConnexioBD bd;
 		string sobrenom = "";
 		if (x) {
@@ -34,7 +34,7 @@ public:
 		sql::ResultSet* res = bd.execQuery(sqlp);
 
 		while (res->next()) {
-			PassarelaPelMesV p = PassarelaPelMesV(res->getString("data_filtrada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"), res->getInt("total_visualitzacions"));
+			DTOPelMesV p = DTOPelMesV(res->getString("data_filtrada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"), res->getInt("total_visualitzacions"));
 			continguts.push_back(p);
 		}
 		delete res;

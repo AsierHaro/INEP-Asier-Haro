@@ -1,15 +1,14 @@
 #pragma once
-#include "PassarelaNSerie.h"
 #include "ConnexioBD.h"
-
+#include "DTONserie.h"
 class CercadorNSeries
 {
 public:
 	CercadorNSeries() {
 
 	}
-	vector<PassarelaNSerie> cercaNovetats() {
-		vector<PassarelaNSerie> continguts;
+	vector<DTONserie> cercaNovetats() {
+		vector<DTONserie> continguts;
 		ConnexioBD bd;
 		string sqlp =
 			"SELECT c.tipus, c.titol, c.qualificacio, "
@@ -30,7 +29,7 @@ public:
 		sql::ResultSet* res = bd.execQuery(sqlp);
 		int i = 0;
 		while (res->next()) {
-			PassarelaNSerie s = PassarelaNSerie(res->getString("data_formateada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"), res->getInt("numero"), res->getInt("numero_temporada"));
+			DTONserie s = DTONserie(res->getString("data_formateada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"), res->getInt("numero"), res->getInt("numero_temporada"));
 			continguts.push_back(s);
 			i++;
 		}

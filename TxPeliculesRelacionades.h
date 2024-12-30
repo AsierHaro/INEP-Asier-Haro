@@ -6,17 +6,14 @@ class TxPeliculesRelacionades
 {
 private:
 	vector<DTOPeliR> resultat;
-	vector<PassarelaVisualitzaPel> v;
 public:
 	TxPeliculesRelacionades() {
 	}
 
 	void executar(string titol) {
 		CercadoraPeliculesRelacionades cerca;
-		v = cerca.cerca(titol);
-		for (unsigned int i = 0; i < v.size(); i++) {
-			resultat.push_back(v[i]);
-		}
+		resultat = cerca.cerca(titol);
+		
 	}
 	vector<DTOPeliR> obteresultat() {
 		return resultat;

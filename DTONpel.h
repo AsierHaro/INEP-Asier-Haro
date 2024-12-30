@@ -1,14 +1,13 @@
 #pragma once
-#include "PassarelaNPelicula.h"
+#include "ConnexioBD.h"
 class DTONpel
 {
 public:
-	DTONpel() {}
-	DTONpel(PassarelaNPelicula& Np) {
-		data = Np.obtedata();
-		titol = Np.obtetitol();
-		edat = Np.obteedat();
-		duracio = Np.obteduracio();
+	DTONpel(string dataN, string titolN, string edatN, int duracioN) {
+		data = dataN;
+		titol = titolN;
+		edat = edatN;
+		duracio = duracioN;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTONpel& Np) {

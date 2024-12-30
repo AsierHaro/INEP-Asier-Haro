@@ -1,11 +1,11 @@
 #pragma once
-#include "PassarelaVisualitzaPel.h"
+#include "DTOPeliR.h"
 #include "ConnexioBD.h"
 
 class CercadoraPeliculesRelacionades
 {
 public:
-    vector<PassarelaVisualitzaPel> cerca(string titol) {
+    vector<DTOPeliR> cerca(string titol) {
         ConnexioBD bd;
         std::string query =
             "SELECT DISTINCT "
@@ -25,9 +25,9 @@ public:
             "INNER JOIN contingut c ON c.titol = p.titol "
             "WHERE (r.titol_x = '" + titol + "' OR r.titol_y = '" + titol + "')";
         sql::ResultSet* res = bd.execQuery(query);
-        vector<PassarelaVisualitzaPel> resultats;
+        vector<DTOPeliR> resultats;
         while (res->next()) {
-            PassarelaVisualitzaPel p = PassarelaVisualitzaPel(res->getString("titol"), res->getInt("duracio"), " ", res->getString("data_formateada"), res->getString("descripcio"), 0, res->getString("qualificacio"));
+            DTOPeliR p = DTOPeliR(res->getString("titol"), res->getInt("duracio"), res->getString("data_formateada"), res->getString("descripcio"), res->getString("qualificacio"));
             resultats.push_back(p);
         }
         delete res;

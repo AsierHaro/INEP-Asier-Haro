@@ -139,7 +139,6 @@
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP!.cpp" />
     <ClCompile Include="CercadoraPropersEstrens.h" />
-    <ClCompile Include="PassarelaPeliculaVisualitzada.h" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
     <ClCompile Include="PassarelaVisualitzaSerie.cpp" />
@@ -180,11 +179,6 @@
     <ClInclude Include="DTOSerieV.h" />
     <ClInclude Include="DTOTemporada.h" />
     <ClInclude Include="DTOUsuari.h" />
-    <ClInclude Include="PassarelaEstrenes.h" />
-    <ClInclude Include="PassarelaNPelicula.h" />
-    <ClInclude Include="PassarelaNserie.h" />
-    <ClInclude Include="PassarelaPelMesV.h" />
-    <ClInclude Include="PassarelaSerieVisualitzada.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
@@ -205,11 +199,8 @@
     <ClInclude Include="TxRegistraUsuari.h" />
     <ClInclude Include="TxSeriesVisualitzades.h" />
     <ClInclude Include="TxTancaSessio.h" />
-    <ClInclude Include="TxVisualitzarPel.h" />
     <ClInclude Include="TxVisualitzarPelicula.h" />
     <ClInclude Include="TxVisualitzaSerie.h" />
-    <ClInclude Include="VisualitzaPelicula.h" />
-    <ClInclude Include="VisualitzaSerie.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="configuracio.txt" />

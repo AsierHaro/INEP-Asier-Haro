@@ -1,15 +1,14 @@
 #pragma once
-#include "PassarelaNPelicula.h"
 #include "ConnexioBD.h"
-
+#include "DTONpel.h"
 class CercadorNPelicules
 {
 public:
 	CercadorNPelicules() {
 
 	}
-	vector<PassarelaNPelicula> cercaNovetats() {
-		vector<PassarelaNPelicula> continguts;
+	vector<DTONpel> cercaNovetats() {
+		vector<DTONpel> continguts;
 		ConnexioBD bd;
 		string sqlp =
 			"SELECT c.tipus, c.titol, c.qualificacio, "
@@ -22,7 +21,7 @@ public:
 			"LIMIT 5";
 		sql::ResultSet* res = bd.execQuery(sqlp);
 		while (res->next()) {
-			PassarelaNPelicula p = PassarelaNPelicula(res->getString("data_formateada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"));
+			DTONpel p = DTONpel(res->getString("data_formateada"), res->getString("titol"), res->getString("qualificacio"), res->getInt("duracio"));
 			continguts.push_back(p);
 		}
 		delete res;

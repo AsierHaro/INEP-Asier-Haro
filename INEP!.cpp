@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
+    SetThreadLocale(MAKELCID(MAKELANGID(LANG_CATALAN, SUBLANG_DEFAULT), SORT_DEFAULT));
     int opcio;
     bool sortir = false;
     CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
@@ -19,9 +20,11 @@ int main()
         cout << "Escriu opció: ";
         cin >> opcio;
         system("cls");
+        SetConsoleOutputCP(CP_UTF8);
         if (opcio == 1) {
             presentacio.iniciSesio();
             system("cls");
+            SetConsoleOutputCP(CP_UTF8);
             if (presentacio.sessioIniciada) {
                 while (presentacio.sessioIniciada && !sortir) {
                     cout << "*********************" << endl;
@@ -35,6 +38,7 @@ int main()
                     wcout << " Escriu opció: ";
                     cin >> opcio;
                     system("cls");
+                    SetConsoleOutputCP(CP_UTF8);
                     if (opcio == 1) {
                         bool tornar = false;
                         while (!tornar && presentacio.sessioIniciada) {
@@ -48,6 +52,7 @@ int main()
                             wcout << " Escriu opció: ";
                             cin >> opcio;
                             system("cls");
+                            SetConsoleOutputCP(CP_UTF8);
                             if (opcio == 1) presentacio.consultaUsuari();
                             else if (opcio == 2) presentacio.modificaUsuari();
                             else if (opcio == 3) presentacio.esborraUsuari();
@@ -67,6 +72,7 @@ int main()
                             wcout << " Escriu opció: ";
                             cin >> opcio;
                             system("cls");
+                            SetConsoleOutputCP(CP_UTF8);
                             if (opcio == 1) presentacio.VisualitzaPel();
                             else if (opcio == 2) presentacio.VisualitzarCapitol();
                             else if (opcio == 3) presentacio.ConsultaVisualitzacions();
@@ -87,6 +93,7 @@ int main()
                             wcout << " Escriu opció: ";
                             cin >> opcio;
                             system("cls");
+                            SetConsoleOutputCP(CP_UTF8);
                             if (opcio == 1) presentacio.ConsultaProperesEstrenes(true);
                             else if (opcio == 2) presentacio.ConsultaUltimesNovetats(true);
                             else if (opcio == 3) presentacio.ConsultaPeliculesMesVistes(true);
@@ -119,6 +126,7 @@ int main()
                 wcout << " Escriu opció: ";
                 cin >> opcio;
                 system("cls");
+                SetConsoleOutputCP(CP_UTF8);
                 if (opcio == 1) presentacio.ConsultaProperesEstrenes(false);
                 else if (opcio == 2) presentacio.ConsultaUltimesNovetats(false);
                 else if (opcio == 3) presentacio.ConsultaPeliculesMesVistes(false);

@@ -1,17 +1,16 @@
 #pragma once
-#include "PassarelaVisualitzaPel.h"
 
 class DTOPeliR {
 public:
 
     DTOPeliR() {}
 
-    DTOPeliR(PassarelaVisualitzaPel pel) {
-        titolPel = pel.obteTitolPel();
-        qualificacio = pel.obteQualificacio();
-        descripcio = pel.obteDescripcio();
-        duracio = pel.obteDuracio();
-        data = pel.obteData();
+    DTOPeliR(string NomP, int duracioP, string DataP, string descripcioP, string qualificacioP) {
+        titolPel = NomP;
+        qualificacio = qualificacioP;
+        descripcio = descripcioP;
+        duracio = duracioP;
+        data = DataP;
     }
 
     friend std::ostream& operator<<(ostream& os, DTOPeliR& dto) {

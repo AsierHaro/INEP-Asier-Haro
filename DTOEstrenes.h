@@ -1,27 +1,26 @@
 #pragma once
-#include "PassarelaEstrenes.h"
-
+#include "ConnexioBD.h"
 
 class DTOEstrenes
 {
 public:
 	DTOEstrenes() {}
-	DTOEstrenes(PassarelaEstrenes est) {
-		data = est.obtedata();
-		tipus = est.obtetipus();
-		titol = est.obtetitol();
-		edat = est.obteedat();
-		duracio = est.obteduracio();
-		temporada = est.obtetemporada();
+	DTOEstrenes(string dataE, string tipusE, string titolE, string edatE, int duracioE, int temporadaE){
+		data = dataE;
+		tipus = tipusE;
+		titol = titolE;
+		edat = edatE;
+		duracio = duracioE;
+		temporada = temporadaE;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTOEstrenes& est) {
-		os << est.data << " [" << est.tipus << "]: " << est.titol << "; " << est.edat << "; ";
+		os << est.data ;
 		if (est.tipus == "pelicula") {
-			os << est.duracio << " min.";
+			os << " [Pel·lícula]: " << est.titol << "; " << est.edat << "; " << est.duracio << " min.";
 		}
 		else {
-			os << "Temporada " << est.temporada << ".";
+			os << " [Sèrie]: " << est.titol << "; " << est.edat << "; " << "Temporada " << est.temporada << ".";
 		}
 		os << endl;
 		return os;

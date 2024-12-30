@@ -1,18 +1,18 @@
 #pragma once
-#include "PassarelaSerieVisualitzada.h"
+
 class DTOSerieV
 {
 public:
 	DTOSerieV() {
 
 	}
-	DTOSerieV(PassarelaSerieVisualitzada& SV) {
-		data = SV.obtedata();
-		titol = SV.obtetitol();
-		edat = SV.obteedat();
-		temporada = SV.obtetemporda();
-		capitol = SV.obtecapitol();
-		numVisualitzacions = SV.obtenumVisualitzacions();
+	DTOSerieV(string dataS, string titolS, string edatS, int temporadaS, int capitolS, int numVisualitzacionsS) {
+		data = dataS;
+		titol = titolS;
+		edat = edatS;
+		temporada = temporadaS;
+		capitol = capitolS;
+		numVisualitzacions = numVisualitzacionsS;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTOSerieV& MV) {

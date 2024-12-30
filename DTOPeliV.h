@@ -1,15 +1,15 @@
 #pragma once
-#include "PassarelaPeliculaVisualitzada.h"
 class DTOPeliV
 {
 public:
 	DTOPeliV() {}
-	DTOPeliV(PassarelaPeliculaVisualitzada& MV) {
-		data = MV.obtedata();
-		titol = MV.obtetitol();
-		descripcio = MV.obtedescripcio();
-		edat = MV.obteedat();
-		numVisualitzacions = MV.obtenumVisualitzacions();
+
+	DTOPeliV(string dataV, string titolV, string descripcioV, string edatV, int numVisualitzacionsV) {
+		data = dataV;
+		titol = titolV;
+		descripcio = descripcioV;
+		edat = edatV;
+		numVisualitzacions = numVisualitzacionsV;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTOPeliV& MV) {

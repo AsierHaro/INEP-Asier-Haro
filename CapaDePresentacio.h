@@ -20,8 +20,6 @@
 #include "TxPeliculesRelacionades.h"
 #include "TxComprobarEdat.h"
 #include "TxVisualitzaSerie.h"
-#include "DTOPel.h"
-
 using namespace std;
 
 class CapaDePresentacio
@@ -201,18 +199,21 @@ public:
 	void ConsultaProperesEstrenes(bool x) {
 		cout << "** Properes estrenes **" << endl;
 		cout << "Modalitat: ";
-		if (!x) {
-			string modalitat;
-			cin >> modalitat;
-		}
-		else {
-			TxConsultarUsuari tx;
-			tx.executar();
-			DTOUsuari usu = tx.obteResultat();
-			cout << usu.obteSubscripcio();
-		}
-		std::cout << std::endl << std::endl << std::endl;
 		try {
+			if (!x) {
+				string modalitat;
+				cin >> modalitat;
+				if (modalitat != "Cinefil" and modalitat != "Completa" and modalitat != "Infantil") {
+					throw std::runtime_error("La modalitat '" + modalitat + "' no existeix en la base de dades.");
+				}
+			}
+			else {
+				TxConsultarUsuari tx;
+				tx.executar();
+				DTOUsuari usu = tx.obteResultat();
+				cout << usu.obteSubscripcio();
+			}
+			std::cout << std::endl << std::endl << std::endl;
 			TxConsultarProperesEstrenes tx;
 			tx.executar();
 			vector<DTOEstrenes> v = tx.obteresultat();
@@ -231,20 +232,24 @@ public:
 	void ConsultaUltimesNovetats(bool x) {
 		cout << "** Novetats **" << endl;
 		cout << "Modalitat: ";
-		if (!x) {
-			string modalitat;
-			cin >> modalitat;
-		}
-		else {
-			TxConsultarUsuari tx;
-			tx.executar();
-			DTOUsuari usu = tx.obteResultat();
-			cout << usu.obteSubscripcio();
-		}
-		cout << endl << endl << endl;
-		cout << "**  Novetats pel·lícules **" << endl
-			<< "***************************" << endl;
 		try {
+			if (!x) {
+				string modalitat;
+				cin >> modalitat;
+				if (modalitat != "Cinefil" and modalitat != "Completa" and modalitat != "Infantil") {
+					throw std::runtime_error("La modalitat '" + modalitat + "' no existeix en la base de dades.");
+				}
+			}
+			else {
+				TxConsultarUsuari tx;
+				tx.executar();
+				DTOUsuari usu = tx.obteResultat();
+				cout << usu.obteSubscripcio();
+			}
+			cout << endl << endl << endl;
+			cout << "**  Novetats pel·lícules **" << endl
+				<< "***************************" << endl;
+		
 			TxNovetatspelicules tx;
 			tx.executar();
 			vector<DTONpel> vp = tx.obteresultat();
@@ -348,6 +353,7 @@ public:
 			DTOUsuari usu = tx.obteResultat();
 			TxComprobarEdat txed;
 			txed.comp(usu.obteEdat(), t.obtequalificacio());
+			system("cls");
 			cout << "La sèrie té " << numt << " temporades." << endl << " Escull temporada: ";
 			int temp;
 			cin >> temp;
@@ -384,7 +390,7 @@ public:
 	void ConsultaVisualitzacions() {
 		cout << "** Consulta visualitzacions **" << endl << endl;
 		cout << "** Visualitzacions pel·lícules **" << endl
-			<< "*********************************" << endl;
+			<<	"*********************************" << endl;
 		try {
 			TxConsultarUsuari tx;
 			tx.executar();
@@ -396,8 +402,8 @@ public:
 			for (unsigned int i = 0; i < vp.size(); i++) {
 				cout << vp[i];
 			}
-			cout << "** Visualitzacions pel·lícules **" << endl
-				<< "*********************************" << endl;
+			cout << "** Visualitzacions sèries **" << endl
+				 << "****************************" << endl;
 			TxSeriesVisualitzades txs;
 			txs.executar(sobrenom);
 			vector<DTOSerieV> vs = txs.obteresultat();

@@ -1,16 +1,16 @@
 #pragma once
-#include "PassarelaNSerie.h"
+#include "ConnexioBD.h"
 class DTONserie
 {
 public:
 	DTONserie() {}
-	DTONserie(PassarelaNSerie Ns) {
-		data = Ns.obtedata();
-		titol = Ns.obtetitol();
-		edat = Ns.obteedat();
-		duracio = Ns.obteduracio();
-		cap = Ns.obtecap();
-		temporada = Ns.obtetemporada();
+	DTONserie(string dataN, string titolN, string edatN, int duracioN, int capN, int temporadaN) {
+		data = dataN;
+		titol = titolN;
+		edat = edatN;
+		duracio = duracioN;
+		cap = capN;
+		temporada = temporadaN;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTONserie& Np) {

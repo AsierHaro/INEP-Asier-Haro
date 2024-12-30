@@ -1,15 +1,15 @@
 #pragma once
-#include "PassarelaPelMesV.h"
+#include "ConnexioBD.h"
 class DTOPelMesV
 {
 public:
 	DTOPelMesV() {}
-	DTOPelMesV(PassarelaPelMesV& MV) {
-		data = MV.obtedata();
-		titol = MV.obtetitol();
-		edat = MV.obteedat();
-		duracio = MV.obteduracio();
-		visualitsacions = MV.obtevisualitzacions();
+	DTOPelMesV(string dataV, string titolV, string edatV, int duracioV, int visualitzacionsV) {
+		data = dataV;
+		titol = titolV;
+		edat = edatV;
+		duracio = duracioV;
+		visualitsacions = visualitzacionsV;
 	}
 
 	friend ostream& operator<<(ostream& os, const DTOPelMesV& MV) {
