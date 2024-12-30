@@ -3,7 +3,9 @@
 class DTOSerieV
 {
 public:
-	DTOSerieV() {}
+	DTOSerieV() {
+
+	}
 	DTOSerieV(PassarelaSerieVisualitzada& SV) {
 		data = SV.obtedata();
 		titol = SV.obtetitol();
@@ -14,7 +16,7 @@ public:
 	}
 
 	friend ostream& operator<<(ostream& os, const DTOSerieV& MV) {
-		os << " - " << MV.data << ": " << MV.titol << "; " << MV.edat << "; Temporada " << MV.temporada << ", capítulo "<< MV.capitol<<"; nombre de visualitzacions: " << MV.numVisualitzacions << endl;
+		os << " - " << MV.data << ": " << MV.titol << "; " << MV.edat << "; Temporada " << MV.temporada << ", capítulo " << MV.capitol << "; nombre de visualitzacions: " << MV.numVisualitzacions << endl;
 		return os;
 	}
 

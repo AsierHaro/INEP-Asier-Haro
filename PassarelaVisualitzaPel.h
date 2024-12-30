@@ -2,79 +2,88 @@
 #include "ConnexioBD.h"
 class PassarelaVisualitzaPel
 {
-	private:
-		string sobrenom;
-		string titolPel;
-		string descripcio;
-		string data;
-		int numVisualitzacions;
+private:
+	string sobrenom;
+	string titolPel;
+	string descripcio;
+	string data;
+	string qualificacio;
+	int numVisualitzacions;
+	int duracio;
 
 
-	public:
-		PassarelaVisualitzaPel() {
-			sobrenom = "";
-			titolPel= "";
-			descripcio = "";
-			data = "";
-			numVisualitzacions = 0;
+public:
+	PassarelaVisualitzaPel() {
+		sobrenom = "";
+		titolPel = "";
+		duracio = 0;
+		descripcio = "";
+		qualificacio = "";
+		data = "";
+		numVisualitzacions = 0;
+	}
+
+
+	PassarelaVisualitzaPel(string NomP, int duracioP, string sobrenomP, string DataP, string descripcioP, int VisualitzacioP, string qualificacioP) {
+		titolPel = NomP;
+		sobrenom = sobrenomP;
+		descripcio = descripcioP;
+		qualificacio = qualificacioP;
+		duracio = duracioP;
+		data = DataP;
+		numVisualitzacions = VisualitzacioP;
+	}
+
+	string visualitza(string sobrenom, string titol) {
+		cout << sobrenom << " " << titol << endl;
+		ConnexioBD bd;
+		std::string sql =
+			"INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) "
+			"SELECT '" + sobrenom + "', '" + titol + "', NOW(), 1 "
+			"WHERE EXISTS (SELECT 1 FROM usuari WHERE sobrenom = '" + sobrenom + "') "
+			"AND EXISTS (SELECT 1 FROM pelicula WHERE titol = '" + titol + "') "
+			"ON DUPLICATE KEY UPDATE num_visualitzacions = num_visualitzacions + 1, data = NOW();";
+		bd.exec(sql);
+		string sqlFecha = "SELECT DATE_FORMAT(v.data, '%d/%m/%Y %H:%i') AS data_formateada "
+			"FROM visualitzacio_pelicula v "
+			"WHERE v.titol_pelicula = '" + titol + "' "
+			"AND v.sobrenom_usuari = '" + sobrenom + "'";
+		string fecha = " ";
+		sql::ResultSet* res = bd.execQuery(sqlFecha);
+		if (res->next()) {
+			fecha = res->getString("data_formateada");
 		}
+		delete res;
+		return fecha;
 
+	}
 
-		PassarelaVisualitzaPel(string NomP, string sobrenomP, string DataP, string descripcioP, int VisualitzacioP) {
-			titolPel = NomP;
-			sobrenom = sobrenomP;
-			descripcio = descripcioP;
-			data = DataP;
-			numVisualitzacions = VisualitzacioP;
-		}
-		/*
-		void insereix() const {
-			ConnexioBD bd;
-			std::string query = "INSERT INTO Pel (sobrenom, titolPel, data,numVisualitzacions) VALUES ('" +
-				titolPel + "', '" +
-				sobrenom + "', '" +
-				descripcio +"', '" +
-				data + "', '%d/%m/%Y'), " +
-				std::to_string(numVisualitzacions) + ")";
-			bd.exec(query);
-		}
+	string obteSobrenom() {
+		return sobrenom;
+	}
 
-		void esborra() const {
-			ConnexioBD bd;
-			string sql = "DELETE FROM Pel WHERE sobrenom = '" + sobrenom + "'";
-			bd.exec(sql);
-		}
+	string obteDescripcio() {
+		return descripcio;
+	}
 
-		void modifica() {
-			ConnexioBD bd;
-			string sql = "UPDATE Pel SET "
-				"titolPel = '" + titolPel + "', "
-				"descripcio = '" + descripcio + " ', "
-				"data = STR_TO_DATE('" + data + "', '%d/%m/%Y'), "
-				"numVisualitzacions = " + std::to_string(numVisualitzacions) + ", "
-				"WHERE sobrenom = '" + sobrenom + "';";
-			bd.exec(sql);
-		}
+	string obteTitolPel() {
+		return titolPel;
+	}
 
-		string obteSobrenom() {
-			return sobrenom;
-		}
+	string obteData() {
+		return data;
+	}
 
-		string obteDescripcio() {
-			return descripcio;
-		}
+	string obteQualificacio() {
+		return qualificacio;
+	}
+	int obteDuracio() {
+		return duracio;
+	}
 
-		string obteTitolPel() {
-			return titolPel;
-		}
-
-		string obteData() {
-			return data;
-		}
-
-		int obtenNumVisualitzacions() {
-			return numVisualitzacions;
-		}
-		*/
+	int obtenNumVisualitzacions() {
+		return numVisualitzacions;
+	}
 };
+
 

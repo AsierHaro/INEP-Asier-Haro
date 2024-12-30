@@ -154,9 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraCapitolsTemporada.h" />
+    <ClInclude Include="CercadoraPeliculesRelacionades.h" />
     <ClInclude Include="CercadoraPeliculesVisualitzades.h" />
     <ClInclude Include="CercadoraPelMesV.h" />
     <ClInclude Include="CercadoraSeriesVisualitzades.h" />
+    <ClInclude Include="CercadoraTemporadas.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="CercadoraVisualitzaSerie.h" />
@@ -164,14 +167,17 @@
     <ClInclude Include="CercadorNSeries.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="DTOCapitol.h" />
     <ClInclude Include="DTOEstrenes.h" />
     <ClInclude Include="DTONpel.h" />
     <ClInclude Include="DTONserie.h" />
     <ClInclude Include="DTOPel.h" />
+    <ClInclude Include="DTOPeliR.h" />
     <ClInclude Include="DTOPeliV.h" />
     <ClInclude Include="DTOPelMesV.h" />
     <ClInclude Include="DTOSerie.h" />
     <ClInclude Include="DTOSerieV.h" />
+    <ClInclude Include="DTOTemporada.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaEstrenes.h" />
     <ClInclude Include="PassarelaNPelicula.h" />
@@ -182,10 +188,13 @@
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PassarelaVisualitzaSerie.h" />
     <ClInclude Include="Petitflix.h" />
+    <ClInclude Include="TxComprobarEdat.h" />
     <ClInclude Include="TxConsultaPeliculesMesVistes.h" />
     <ClInclude Include="TxConsultaProperesEstrenes.h" />
     <ClInclude Include="TxConsultarUsuari.h" />
     <ClInclude Include="TxEsborraUsuari.h" />
+    <ClInclude Include="TxInformacioPel.h" />
+    <ClInclude Include="TxInfoTemporades.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />
     <ClInclude Include="TxIniciSessio.h" />
     <ClInclude Include="TxNovetatspelicules.h" />
@@ -195,6 +204,7 @@
     <ClInclude Include="TxSeriesVisualitzades.h" />
     <ClInclude Include="TxTancaSessio.h" />
     <ClInclude Include="TxVisualitzarPel.h" />
+    <ClInclude Include="TxVisualitzarPelicula.h" />
     <ClInclude Include="TxVisualitzaSerie.h" />
     <ClInclude Include="VisualitzaPelicula.h" />
     <ClInclude Include="VisualitzaSerie.h" />

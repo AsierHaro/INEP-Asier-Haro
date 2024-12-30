@@ -12,8 +12,8 @@ public:
             "WHERE v.sobrenom_usuari = '" + sobrenom + "'";
 
         sql::ResultSet* res = bd.execQuery(sql);
-        int resultat;
-        if (res->next()){
+        int resultat = 0;
+        if (res->next()) {
             resultat = res->getInt("total_visualitzacions");
         }
         delete res;
@@ -22,5 +22,4 @@ public:
         return resultat;
     }
 };
-
 

@@ -3,33 +3,27 @@
 #include "PassarelaVisualitzaPel.h"
 class Petitflix
 {
-	private:
-		PassarelaUsuari usuari;
-		PassarelaVisualitzaPel pel;
-		Petitflix(){
-		}
-	public:
+private:
+	PassarelaUsuari usuari;
+	Petitflix() {
+	}
+public:
 
-		static Petitflix& getInstance() {
-			static Petitflix instance;
-			return instance;
-		}
+	static Petitflix& getInstance() {
+		static Petitflix instance;
+		return instance;
+	}
 
-		void iniciaSesio(PassarelaUsuari u) {
-			usuari = u;
-		}
-		void tancaSesio() {
-			usuari = PassarelaUsuari();
-		}
-		PassarelaUsuari* obteUsuari() {
-			return &usuari;
-		}
-		/*void visualitzacio() {
-			pel = PassarelaVisualitzaPel();
-		}
-		PassarelaVisualitzaPel* obtenNumVisualitzacions(){
-			return &pel;
-		}*/
+	void iniciaSesio(PassarelaUsuari u) {
+		usuari = u;
+	}
+	void tancaSesio() {
+		usuari = PassarelaUsuari();
+	}
+	PassarelaUsuari* obteUsuari() {
+		return &usuari;
+	}
 
 };
+
 
