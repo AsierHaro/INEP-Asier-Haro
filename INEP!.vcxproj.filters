@@ -245,6 +245,9 @@
     <ClInclude Include="TxVisualitzarPelicula.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="CercadoraPelicula.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="configuracio.txt" />

@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
     <ClInclude Include="CercadoraCapitolsTemporada.h" />
+    <ClInclude Include="CercadoraPelicula.h" />
     <ClInclude Include="CercadoraPeliculesRelacionades.h" />
     <ClInclude Include="CercadoraPeliculesVisualitzades.h" />
     <ClInclude Include="CercadoraPelMesV.h" />
